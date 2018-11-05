@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 ruby '2.4.4'
-
+# require:false it doesnt require it for your application when it's running, good to add for faker too
 gem 'bootsnap', require: false
 gem 'devise'
 gem 'jbuilder', '~> 2.0'
@@ -18,8 +18,8 @@ gem 'uglifier'
 gem 'webpacker'
 
 gem 'nokogiri'
+# It's like open URI but quicker (already parses results and includes JSON)
 gem 'httparty'
-
 
 group :development do
   gem 'web-console', '>= 3.3.0'
