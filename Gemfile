@@ -19,7 +19,6 @@ gem 'webpacker'
 
 gem 'nokogiri'
 gem 'httparty'
-gem 'json'
 
 
 group :development do
