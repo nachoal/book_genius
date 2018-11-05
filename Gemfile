@@ -20,6 +20,9 @@ gem 'webpacker'
 gem 'nokogiri'
 # It's like open URI but quicker (already parses results and includes JSON)
 gem 'httparty'
+# To store images
+gem 'cloudinary'
+gem 'carrierwave', '~> 1.2'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
