@@ -10,10 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_05_192329) do
+ActiveRecord::Schema.define(version: 2018_11_05_203656) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "books", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.string "author"
+    t.string "publisher"
+    t.string "amazon_product_url"
+    t.string "book_image"
+    t.jsonb "twitter_json"
+    t.jsonb "nyt_json"
+    t.jsonb "amazon_json"
+    t.jsonb "perspective_json"
+    t.jsonb "aylien_twitter_json"
+    t.jsonb "aylien_amazon_json"
+    t.jsonb "perspective_twitter_json"
+    t.jsonb "perspective_amazon_json"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
