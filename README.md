@@ -21,7 +21,7 @@
 
 # 📝 Notes:
 
-## Rent A Space
+## Book genius
 
 * Ruby version 
   ruby '2.4.4'
@@ -32,3 +32,4 @@
   2. Run yarn install to download webpack packages (if any)
   3. Run rails db:create
   4. Run rails db:migrate
+  5. Run rails db:seed
