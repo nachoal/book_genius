@@ -1,3 +1,3 @@
 class Book < ApplicationRecord
-  mount_uploader :cover, PhotoUploader
+  mount_uploader :book_image, PhotoUploader
 end
