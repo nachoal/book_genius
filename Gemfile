@@ -16,6 +16,7 @@ gem 'sass-rails'
 gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
+gem 'twitter'
 
 gem 'nokogiri'
 # It's like open URI but quicker (already parses results and includes JSON)
