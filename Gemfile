@@ -17,7 +17,7 @@ gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
 gem 'twitter'
-
+gem 'aylien_text_api'
 gem 'nokogiri'
 # It's like open URI but quicker (already parses results and includes JSON)
 gem 'httparty'
