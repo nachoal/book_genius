@@ -4,12 +4,13 @@
 ### 🔥 DEADLINE: 4PM NOV 5 🔥
 
 ## 🚨 PENDING:
-* [] **Back-end team:** Explore the book API's 
-  * [] **Guillaume:** Start exploring the NYT API to get the book lists
-  * [] **Nacho:** Start exploring the AYLIEN API to get the sentiments for the books
-* [] **Front-end team:** Wireframe with FIGMA
-* [] **Front-end team:** Decide on main web app identity
-* [] **Front-end team:** Research visualization alternatives for the book page
+* [ ] **Back-end team:** Explore the book API's 
+  * [ ] **Guillaume:** Start exploring the NYT API to get the book lists
+  * [ ] **Nacho:** Start exploring the AYLIEN API to get the sentiments for the books
+  * [ ] **Nacho:** Use the twitter API to search for tweets for x book
+* [ ] **Front-end team:** Wireframe with FIGMA
+* [ ] **Front-end team:** Decide on main web app identity
+* [ ] **Front-end team:** Research visualization alternatives for the book page
 
 ## ✅ DONE:
 
