@@ -1,5 +1,5 @@
 class Book < ApplicationRecord
-  has_many :tweets
-  has_many :aylien_book_results
+  has_many :tweets, dependent: :delete_all
+  has_many :aylien_book_results, dependent: :delete_all
   mount_uploader :book_image, PhotoUploader
 end

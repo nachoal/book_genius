@@ -34,7 +34,6 @@ ActiveRecord::Schema.define(version: 2018_11_07_193103) do
     t.string "book_image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "photo"
     t.string "category"
     t.string "nyt_review_url"
   end
