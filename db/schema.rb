@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_07_185502) do
+ActiveRecord::Schema.define(version: 2018_11_07_194333) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,8 +18,10 @@ ActiveRecord::Schema.define(version: 2018_11_07_185502) do
   create_table "amazon_reviews", force: :cascade do |t|
     t.text "review"
     t.jsonb "aylien_result_json"
-    t.bigint "books_id"
-    t.index ["books_id"], name: "index_amazon_reviews_on_books_id"
+    t.bigint "book_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["book_id"], name: "index_amazon_reviews_on_book_id"
   end
 
   create_table "books", force: :cascade do |t|
@@ -41,7 +43,6 @@ ActiveRecord::Schema.define(version: 2018_11_07_185502) do
     t.datetime "updated_at", null: false
     t.string "category"
     t.string "nyt_review"
-    t.string "amazon_review"
     t.text "tweets"
     t.jsonb "aylien_result"
   end
@@ -58,5 +59,5 @@ ActiveRecord::Schema.define(version: 2018_11_07_185502) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "amazon_reviews", "books", column: "books_id"
+  add_foreign_key "amazon_reviews", "books"
 end
