@@ -32,7 +32,6 @@ ActiveRecord::Schema.define(version: 2018_11_06_220714) do
     t.jsonb "perspective_amazon_json"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "photo"
     t.string "category"
     t.string "nyt_review"
     t.text "tweets"
