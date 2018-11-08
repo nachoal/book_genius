@@ -8,9 +8,9 @@ puts 'Searching & assigning tweets to books...'
 TwitterService.tweet_save
 
 puts 'Searching & assigning Amazon reviews to books...'
-AmazonBookScrapingService.new.seed_db
+AmazonBookScrapingService.new.seed_db(5,6)
 
-puts 'Calling Aylien API to get sentiments from twitter and assigning result to book.aylien_book_results...'
+puts 'Getting Aylien sentiment for aggregated tweets and aggregated reviews | Assigning result to book.aylien_book_results...'
 AylienService.aggregated_tweets_reviews_sentiment
 
 puts 'Getting Aylien sentiment for each individual tweet'
