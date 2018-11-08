@@ -1,29 +1,15 @@
 puts 'Cleaning database...'
 Book.destroy_all
-<<<<<<< HEAD
-=======
-AmazonReview.destroy_all
-Tweets.destroy_all
->>>>>>> 9dd8398eafae41ae410f2544a510a86df4f768fe
 
 puts 'Creating books...'
 NYTService.new.seed_db
 
-<<<<<<< HEAD
 puts 'Searching & assigning tweets to books...'
 TwitterService.tweet_save
 
 puts 'Searching & assigning Amazon reviews to books...'
 AmazonBookScrapingService.new.seed_db
 
-=======
-puts 'Searching & assigning Amazon reviews to books...'
-AmazonBookScrapingService.new.seed_db
-
-puts 'Searching & assigning tweets and individual aylien tweet result to books...'
-TwitterService.tweet_save
-
->>>>>>> 9dd8398eafae41ae410f2544a510a86df4f768fe
 puts 'Calling Aylien API to get sentiments from twitter and assigning result to book.aylien_book_results...'
 AylienService.aggregated_tweets_reviews_sentiment
 
