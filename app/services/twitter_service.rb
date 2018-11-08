@@ -21,9 +21,9 @@ class TwitterService
   end
 
   def self.tweet_save
-    books = Book.all
+    books = Book.take(5)
     books.each do |book|
-      client.search("#{book.title} book -rt", lang: 'en').take(5).each do |tweety|
+      client.search("#{book.title} book -rt", lang: 'en').take(100).each do |tweety|
         book.tweets.create(
           tweet: tweety.text,
           tweet_location: tweety.user.location

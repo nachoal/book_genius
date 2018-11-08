@@ -28,14 +28,14 @@ class AmazonBookScrapingService
         review_list << review.children.text
       end
       page += 1
-      break if page > 1 # max_page
+      break if page > 9 # max_page
     end
     review_list
   end
 
   def seed_db
-    # Book.all.each do |book|
-    book = Book.first # fetching reviews for only one book. To be removed once everything is ready and in production.
+    Book.take(5).each do |book|
+    # book = Book.first # fetching reviews for only one book. To be removed once everything is ready and in production.
       input = "#{book.title} #{book.author} #{book.publisher}"
       data_asin = get_book_data_asin(input)
       get_all_book_reviews(data_asin).each do |review|
