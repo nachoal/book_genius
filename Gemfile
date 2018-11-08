@@ -25,6 +25,9 @@ gem 'httparty'
 gem 'cloudinary'
 gem 'carrierwave', '~> 1.2'
 
+# OpenSSL provides SSL, TLS and general purpose cryptography. It wraps the OpenSSL library.
+gem 'openssl'
+
 group :development do
   gem 'web-console', '>= 3.3.0'
 end
