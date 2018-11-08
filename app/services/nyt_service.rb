@@ -16,10 +16,11 @@ class NYTService
 
   def seed_db
     self.lists.each do |list|
-      category = get_clean_category(list['list_name'])
+      p category = get_clean_category(list['list_name'])
       list['books'].each do |book|
+        p book
         image_url = book['book_image'] || 'https://via.placeholder.com/326x495'
-        new_book = Book.new(
+        p new_book = Book.new(
           title: book['title'],
           author: book['author'],
           description: book['description'],
@@ -29,7 +30,7 @@ class NYTService
           nyt_review_url: book['book_review_link']
         )
         new_book.remote_book_image_url = image_url
-        new_book.save
+        p new_book.save
       end
     end
   end

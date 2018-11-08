@@ -16,15 +16,15 @@ class AylienService
   def self.aggregated_tweets_reviews_sentiment
     books = Book.all
     books.each do |book|
-      appended_tweets = book.tweets.map { |twit| twit.tweet }.join(' ')
-      appended_reviews = book.amazon_reviews.map { |review| review.review  }.join(' ')
-      aylien_results = AylienBookResult.new(
+      p appended_tweets = book.tweets.map { |twit| twit.tweet }.join(' ')
+      p appended_reviews = book.amazon_reviews.map { |review| review.review  }.join(' ')
+      p aylien_results = AylienBookResult.new(
         aylien_twitter_json: text_api.sentiment(text: appended_tweets),
         aylien_amazon_json: text_api.sentiment(text: appended_reviews),
         aylien_nyt_json: text_api.sentiment(url: book.nyt_review_url),
         book: book
       )
-      aylien_results.save
+      p aylien_results.save
     end
   end
 
