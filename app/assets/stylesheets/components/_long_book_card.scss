@@ -1,0 +1,124 @@
+.long-book-card{
+  display: flex;
+  color: rgb(72, 72, 72) ;
+  background: rgb(255, 255, 255) ;
+  border-width: 1px ;
+  border-style: solid ;
+  border-color: rgb(235, 235, 235) ;
+  border-image: initial ;
+  border-radius: 5px ;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  padding: 20px;
+}
+
+
+.card-image{
+  flex: 0 0 auto;
+  width: 150px;
+  margin: 10px;
+  background-size: cover;
+}
+
+.card-details{
+  flex: 1 1 200px;
+  height: 80%;
+  padding-left: 25px;
+  padding-right: 50px;
+
+  h2{
+    font-size: 1.4em;
+    font-weight: bolder;
+    margin-bottom: 10px;
+    margin-top: 12.5px;
+  }
+
+  h4{
+    font-size: 1em;
+    font-weight: bolder;
+    margin-bottom: 10px;
+  }
+
+  p{
+    font-size: 0.8em;
+  }
+}
+
+.sentiment{
+  flex: 0 0 200px;
+  border-left: 1px solid #ff0000;
+  padding-left: 25px;
+  padding-right: 5px;
+  height: 80%;
+
+  h4{
+    font-size: 1.1em;
+    font-weight: bolder;
+    margin-bottom: 4px;
+  }
+
+  p{
+    font-size: 0.8em;
+    font-weight: bolder;
+  }
+}
+
+a {
+  text-decoration: none;
+
+  &:hover{
+    text-decoration: none;
+  }
+}
+
+.product {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  border-radius: 3px;
+  transition: all 0.15s ease;
+}
+
+/* Controls design */
+.product-controls {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 0px;
+}
+.product-controls a {
+  padding: 0 20px;
+  font-size: 17px;
+  color: #E6E6E6;
+}
+.product-controls a:hover {
+  color: #D3473C
+}
+.product-controls-hidden a {
+  color: transparent;
+  font-size: 15px;
+  transition: all 0.15s ease;
+  border-color: transparent;
+}
+
+/* Hover effects */
+.product:hover {
+  background: #f7f7fa;
+  cursor: pointer;
+}
+.product-upvote:hover, .product-upvote.product-upvote-upvoted {
+  color: #5898f1;
+  cursor: pointer;
+}
+.product-upvote-upvoted .product-arrow {
+  border-bottom-color: #5898f1;
+}
+// .product:hover .product-upvote {
+//   transform: scale(1.2)
+// }
+.product:hover .product-controls-hidden a {
+  color: #E6E6E6;
+}
+.product-upvote:hover .product-arrow {
+  border-bottom: 9px solid #5898f1;
+}

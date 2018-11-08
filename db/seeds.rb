@@ -18,5 +18,3 @@ AylienService.individual_tweet_sentiment
 
 puts 'Getting Aylien sentiment for each individual Amazon review'
 AylienService.individual_review_sentiment
-
-puts 'Finished!'
