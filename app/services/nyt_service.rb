@@ -16,9 +16,13 @@ class NYTService
 
   def seed_db
     self.lists.each do |list|
+      puts "Going through #{list} list and getting clean category "
       category = get_clean_category(list['list_name'])
+      puts "Going through books"
       list['books'].each do |book|
+      puts "Fetching Book image url for book #{book['title']}"
         image_url = book['book_image'] || 'https://via.placeholder.com/326x495'
+      puts "Creating new book with title #{book['title']}"
         new_book = Book.new(
           title: book['title'],
           author: book['author'],
@@ -28,6 +32,7 @@ class NYTService
           amazon_product_url: book['amazon_product_url'],
           nyt_review_url: book['book_review_link']
         )
+        puts "Adding Book image to #{book['title']}"
         new_book.remote_book_image_url = image_url
         new_book.save
       end

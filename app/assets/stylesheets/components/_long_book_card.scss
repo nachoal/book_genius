@@ -1,30 +1,27 @@
 .long-book-card{
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-start;
-  position: relative !important;
-  color: rgb(72, 72, 72) !important;
-  height: 200px !important;
-  background: rgb(255, 255, 255) !important;
-  border-width: 1px !important;
-  border-style: solid !important;
-  border-color: rgb(235, 235, 235) !important;
-  border-image: initial !important;
-  border-radius: 5px !important;
-  margin-bottom: 15px;
+  color: rgb(72, 72, 72) ;
+  background: rgb(255, 255, 255) ;
+  border-width: 1px ;
+  border-style: solid ;
+  border-color: rgb(235, 235, 235) ;
+  border-image: initial ;
+  border-radius: 5px ;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  padding: 20px;
 }
 
 
 .card-image{
   flex: 0 0 auto;
-  width: 300px;
-  height: 200px;
+  width: 150px;
+  margin: 10px;
   background-size: cover;
 }
 
 .card-details{
-  flex: 1 1 auto;
+  flex: 1 1 200px;
   height: 80%;
   padding-left: 25px;
   padding-right: 50px;
@@ -47,9 +44,9 @@
   }
 }
 
-.card-price{
+.sentiment{
   flex: 0 0 200px;
-  border-left: 1px solid #c6c6c6;
+  border-left: 1px solid #ff0000;
   padding-left: 25px;
   padding-right: 5px;
   height: 80%;
@@ -72,4 +69,56 @@ a {
   &:hover{
     text-decoration: none;
   }
+}
+
+.product {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  border-radius: 3px;
+  transition: all 0.15s ease;
+}
+
+/* Controls design */
+.product-controls {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 0px;
+}
+.product-controls a {
+  padding: 0 20px;
+  font-size: 17px;
+  color: #E6E6E6;
+}
+.product-controls a:hover {
+  color: #D3473C
+}
+.product-controls-hidden a {
+  color: transparent;
+  font-size: 15px;
+  transition: all 0.15s ease;
+  border-color: transparent;
+}
+
+/* Hover effects */
+.product:hover {
+  background: #f7f7fa;
+  cursor: pointer;
+}
+.product-upvote:hover, .product-upvote.product-upvote-upvoted {
+  color: #5898f1;
+  cursor: pointer;
+}
+.product-upvote-upvoted .product-arrow {
+  border-bottom-color: #5898f1;
+}
+// .product:hover .product-upvote {
+//   transform: scale(1.2)
+// }
+.product:hover .product-controls-hidden a {
+  color: #E6E6E6;
+}
+.product-upvote:hover .product-arrow {
+  border-bottom: 9px solid #5898f1;
 }

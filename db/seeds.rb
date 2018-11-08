@@ -1,8 +1,8 @@
-# puts 'Cleaning database...'
-# Book.destroy_all
+puts 'Cleaning database...'
+Book.destroy_all
 
-# puts 'Creating books...'
-# NYTService.new.seed_db
+puts 'Creating books...'
+NYTService.new.seed_db
 
 # puts 'Searching & assigning tweets to books...'
 # TwitterService.tweet_save
@@ -20,14 +20,15 @@
 # AylienService.individual_review_sentiment
 
 
-# puts 'Finished!'
+puts 'Finished!'
 
-20.times do
-  Book.create!(
-    title: Faker::Book.title,
-    description: Faker::Lorem.sentence(rand(3..4)),
-    author: Faker::Book.author,
-    publisher: Faker::Book.publisher,
-    category: Faker::Book.genre
-  )
-end
+# 20.times do
+#   Book.create!(
+#     title: Faker::Book.title,
+#     description: Faker::Lorem.sentence(rand(3..4)),
+#     author: Faker::Book.author,
+#     publisher: Faker::Book.publisher,
+#     category: Faker::Book.genre,
+#     remote_book_image_url: 'https://source.unsplash.com/collection/2589571/240x320'
+#   )
+# end

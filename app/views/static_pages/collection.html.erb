@@ -1,13 +1,36 @@
 <div class="container">
 
+  <div class="row">
 
-  <% @collection.books.each do |book| %>
-    <div class="row long-book-card">
-      <p>title: <%= book.title %></p>
-      <p>author: <%= book.author %></p>
-      <p>category: <%= book.category %></p>
-      <p>publisher: <%= book.publisher %></p>
-      <hr>
+    <div class="col-sm-2">
+      <p>Sidebar?</p>
     </div>
-  <% end %>
+
+    <div class="col-sm-10">
+      <% @collection.books.each do |book| %>
+        <div class="long-book-card">
+          <div class="card-image">
+           <%= link_to cl_image_tag(book.book_image, width: 150, height: 200, crop: :fill), style:"width:100px;" %>
+            <div class="product">
+              <ul class="list-inline product-controls hidden-sm hidden-xs">
+                <li><a href=""><i class="fas fa-heart"></i></a></li>
+                <li><a href=""><i class="fas fa-share"></i></a></li>
+                <li><a href=""><i class="fas fa-star"></i></a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="card-details">
+            <h2><%= book.title %></h2>
+            <h4> by <%= book.author %></h4>
+            <p><%= book.category %></p>
+            <p><%= book.publisher %></p>
+            <p><%= book.description %></p>
+          </div>
+          <div class="sentiment">
+            <p> Sentiment </p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>
