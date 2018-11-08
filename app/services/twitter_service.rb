@@ -26,9 +26,7 @@ class TwitterService
       client.search("#{book.title} book -rt", lang: 'en').take(5).each do |tweety|
         book.tweets.create(
           tweet: tweety.text,
-          tweet_location: tweety.user.location,
-          aylient_result_json:
-          AylienService.text_api.sentiment(text: tweety.text)
+          tweet_location: tweety.user.location
         )
       end
     end
