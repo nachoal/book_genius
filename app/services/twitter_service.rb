@@ -24,7 +24,7 @@ class TwitterService
     books = Book.take(1)
     books.each do |book|
       client.search("#{book.title} book -rt", lang: 'en').take(100).each do |tweety|
-        book.tweets.create(
+         p book.tweets.create(
           tweet: tweety.text,
           tweet_location: tweety.user.location
         )

@@ -34,7 +34,7 @@ class NYTService
         )
         puts "Adding Book image to #{book['title']}"
         new_book.remote_book_image_url = image_url
-        new_book.save
+        p new_book.save
       end
     end
   end
