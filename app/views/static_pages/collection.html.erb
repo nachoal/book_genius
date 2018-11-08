@@ -1,0 +1,15 @@
+<div class="container">
+
+
+  <% @collection.books.each do |book| %>
+    <div class="row long_book_card">
+      <p>title: <%= book.title %></p>
+      <p>author: <%= book.author %></p>
+      <p>category: <%= book.category %></p>
+      <p>publisher: <%= book.publisher %></p>
+      <hr>
+    </div>
+  <% end %>
+
+
+</div>
