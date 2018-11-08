@@ -2,7 +2,7 @@
   <h2>Book list</h2>
   <% @books.each do |book| %>
     <div class="book-card">
-      <div class="book-cover"><%= cl_image_tag(book.book_image, crop: :thumb, width: 200, height: 300)%></div>
+      <div class="book-cover"><%= cl_image_tag(book.book_image.url(:thumbnail))%></div>
       <div class="book-body">
         <h4><strong><%= book.title%></strong></h4>
         <h5>By <%= book.author %>  </h5>
