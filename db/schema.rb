@@ -10,10 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_06_220714) do
+ActiveRecord::Schema.define(version: 2018_11_07_194333) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "amazon_reviews", force: :cascade do |t|
+    t.text "review"
+    t.jsonb "aylien_result_json"
+    t.bigint "book_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["book_id"], name: "index_amazon_reviews_on_book_id"
+  end
+
+  create_table "aylien_book_results", force: :cascade do |t|
+    t.bigint "book_id"
+    t.jsonb "aylien_twitter_json"
+    t.jsonb "aylien_amazon_json"
+    t.jsonb "aylien_nyt_json"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["book_id"], name: "index_aylien_book_results_on_book_id"
+  end
 
   create_table "books", force: :cascade do |t|
     t.string "title"
@@ -22,20 +41,20 @@ ActiveRecord::Schema.define(version: 2018_11_06_220714) do
     t.string "publisher"
     t.string "amazon_product_url"
     t.string "book_image"
-    t.jsonb "twitter_json"
-    t.jsonb "nyt_json"
-    t.jsonb "amazon_json"
-    t.jsonb "perspective_json"
-    t.jsonb "aylien_twitter_json"
-    t.jsonb "aylien_amazon_json"
-    t.jsonb "perspective_twitter_json"
-    t.jsonb "perspective_amazon_json"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "category"
-    t.string "nyt_review"
-    t.text "tweets"
-    t.jsonb "aylien_result"
+    t.string "nyt_review_url"
+  end
+
+  create_table "tweets", force: :cascade do |t|
+    t.bigint "book_id"
+    t.string "tweet"
+    t.string "tweet_location"
+    t.jsonb "aylient_result_json"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["book_id"], name: "index_tweets_on_book_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -50,4 +69,7 @@ ActiveRecord::Schema.define(version: 2018_11_06_220714) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "amazon_reviews", "books"
+  add_foreign_key "aylien_book_results", "books"
+  add_foreign_key "tweets", "books"
 end

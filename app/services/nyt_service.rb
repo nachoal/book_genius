@@ -7,27 +7,27 @@ class NYTService
   end
 
   def lists
-    self.class.get("/overview.json", @options)['results']['lists']
+    self.class.get('/overview.json', @options)['results']['lists']
   end
 
-  def getCleanCategory(category)
+  def get_clean_category(category)
     YAML.load_file("#{Rails.root.to_s}/config/book_categories.yml")[category]
   end
 
   def seed_db
     self.lists.each do |list|
-      category = getCleanCategory(list["list_name"])
-      list["books"].each do |book|
-        image_url = book["book_image"] ? book["book_image"] : "https://via.placeholder.com/326x495"
+      category = get_clean_category(list['list_name'])
+      list['books'].each do |book|
+        image_url = book['book_image'] || 'https://via.placeholder.com/326x495'
         new_book = Book.new(
-          title: book["title"],
-          author: book["author"],
-          description: book["description"],
+          title: book['title'],
+          author: book['author'],
+          description: book['description'],
           category: category,
-          publisher: book["publisher"],
-          amazon_product_url: book["amazon_product_url"],
-          nyt_review: book["book_review_link"]
-          )
+          publisher: book['publisher'],
+          amazon_product_url: book['amazon_product_url'],
+          nyt_review_url: book['book_review_link']
+        )
         new_book.remote_book_image_url = image_url
         new_book.save
       end

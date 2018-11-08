@@ -20,18 +20,20 @@ class TwitterService
     end
   end
 
-  def self.tweet_text_save
-    books = Book.all
+  def self.tweet_save
+    books = Book.take(1)
     books.each do |book|
-      book.tweets = client
-                    .search("#{book.title} book -rt", lang: 'en')
-                    .map(&:text).join(' ')
-      book.save!
+      client.search("#{book.title} book -rt", lang: 'en').take(100).each do |tweety|
+        book.tweets.create(
+          tweet: tweety.text,
+          tweet_location: tweety.user.location
+        )
+      end
     end
   end
 
   # returns an array with all tweets in english
-  def clean_search(query)
-    @client.search("#{query} book -rt", lang: 'en').map(&:text).join(' ')
-  end
+  # def clean_search(query)
+  #   @client.search("#{query} book -rt", lang: 'en').map(&:t ext).join(' ')
+  # end
 end
