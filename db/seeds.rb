@@ -18,15 +18,3 @@ AylienService.aggregated_tweets_reviews_sentiment
 
 # puts 'Getting Aylien sentiment for each individual Amazon review'
 # AylienService.individual_review_sentiment
-
-puts 'Finished!'
-
-# 20.times do
-#   Book.create!(
-#     title: Faker::Book.title,
-#     description: Faker::Lorem.sentence(rand(3..4)),
-#     author: Faker::Book.author,
-#     publisher: Faker::Book.publisher,
-#     category: Faker::Book.genre
-#   )
-# end
