@@ -24,6 +24,7 @@ gem 'httparty'
 # To store images
 gem 'cloudinary'
 gem 'carrierwave', '~> 1.2'
+gem 'faker'
 
 # OpenSSL provides SSL, TLS and general purpose cryptography. It wraps the OpenSSL library.
 gem 'openssl'
