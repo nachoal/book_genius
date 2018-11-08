@@ -1,11 +1,11 @@
-# DO NOT FORGET TO MODIFY SERVICE IN ORDER TO SCRAPE ALL REVIEWS FOR ALL BOOKS
-
 class AmazonBookScrapingService
+  class AmazonIsBeingAPieceOfShit < StandardError; end
   include HTTParty
 
   def get_book_data_asin(book_and_author)
     url = "https://www.amazon.com/s/ref=nb_sb_noss?url=search-alias%3Dstripbooks-intl-ship&field-keywords=#{book_and_author}"
     # html_file = HTTParty.get(URI.decode(url)
+    puts "Getting book ASIN number"
     process_url(url).xpath('//li[@id="result_0"][@data-asin]')[0].attributes['data-asin'].value
   end
 
@@ -15,30 +15,40 @@ class AmazonBookScrapingService
     process_reviews(reviews)
   end
 
-  def get_all_book_reviews(data_asin)
+  def get_all_book_reviews(data_asin, max_page)
+    puts "Connecting to main page of book to retrieve total number of pages with reviews"
     first_url = "https://www.amazon.com/product-reviews/#{data_asin}/ref=cm_cr_getr_d_paging_btm_1?ie=UTF8&reviewerType=all_reviews&pageNumber=1"
     review_count = process_url(first_url).xpath('//span[@data-hook="total-review-count"]').text.to_i
-    max_page = review_count % 10
+    total_page = review_count % 10
+    puts "The book with with ASIN #{data_asin} has #{total_page} pages of reviews (#{total_page * 10} reviews in total)"
     page = 1
     review_list = []
     loop do
+      puts "Getting reviews of book (ASIN: #{data_asin}) on page #{page} of Amazon"
       url_str = url(data_asin, page)
       reviews = process_url(url_str).xpath('//span[@data-hook="review-body"]')
+      i = 1
       reviews.each do |review|
+        puts "Book (ASIN: #{data_asin}): Fetching review #{i} of page #{page}"
         review_list << review.children.text
+        puts "Waiting 0.5 sec before fetching next review"
+        sleep(0.5)
+        i += 1
       end
       page += 1
-      break if page > 9 # max_page
+      top_page = (total_page >= max_page ? max_page : total_page)
+      break if page > top_page
+      puts "Waiting 0.5 sec before fectching next page of reviews"
+      sleep(0.5)
     end
     review_list
   end
 
-  def seed_db
-    Book.take(1).each do |book|
-    # book = Book.first # fetching reviews for only one book. To be removed once everything is ready and in production.
+  def seed_db(book_num, max_page)
+    Book.take(book_num).each do |book|
       input = "#{book.title} #{book.author} #{book.publisher}"
       data_asin = get_book_data_asin(input)
-      get_all_book_reviews(data_asin).each do |review|
+      get_all_book_reviews(data_asin, max_page).each do |review|
         if review
           new_review = AmazonReview.new(
             review: review,
@@ -55,16 +65,28 @@ class AmazonBookScrapingService
   private
 
   def url(data_asin, page)
-    # "https://www.amazon.com/product-reviews/#{data_asin}/ref=cm_cr_getr_d_paging_btm_next_#{page}?ie=UTF8&reviewerType=all_reviews&pageNumber=#{page}"
-    "https://www.amazon.com/product-reviews/#{data_asin}?ie=UTF8&reviewerType=all_reviews&pageNumber=#{page}"
+    a = "https://www.amazon.com/product-reviews/#{data_asin}/ref=cm_cr_getr_d_paging_btm_next_#{page}?ie=UTF8&reviewerType=all_reviews&pageNumber=#{page}"
+    b = "https://www.amazon.com/product-reviews/#{data_asin}?ie=UTF8&reviewerType=all_reviews&pageNumber=#{page}"
+    [a, b].sample
   end
 
   def process_url(url)
+    i = 1
     html_file = HTTParty.get(url)
-    if html_file.code == 200
-      Nokogiri::HTML(html_file)
+    raise AmazonIsBeingAPieceOfShit, "Code not 200. Actual: #{html_file.code}" unless html_file.code == 200
+
+    puts 'Amazon let us through! Processing url wiht Nokogiri'
+    Nokogiri::HTML(html_file)
+  rescue AmazonIsBeingAPieceOfShit => error
+    puts "Amazon didn't let us through..."
+    puts error
+    puts 'Retrying in 5 seconds'
+    sleep 5
+    i += 1
+    if i < 4
+      retry
     else
-      binding.pry
+      abort ("Amazon is blocking us... Abort!")
     end
   end
 
