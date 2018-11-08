@@ -26,7 +26,7 @@ class NYTService
           category: category,
           publisher: book['publisher'],
           amazon_product_url: book['amazon_product_url'],
-          nyt_review: book['book_review_link']
+          nyt_review_url: book['book_review_link']
         )
         new_book.remote_book_image_url = image_url
         new_book.save

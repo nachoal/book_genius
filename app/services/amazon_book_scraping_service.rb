@@ -34,7 +34,7 @@ class AmazonBookScrapingService
   end
 
   def seed_db
-    Book.take(5).each do |book|
+    Book.take(1).each do |book|
     # book = Book.first # fetching reviews for only one book. To be removed once everything is ready and in production.
       input = "#{book.title} #{book.author} #{book.publisher}"
       data_asin = get_book_data_asin(input)
@@ -49,7 +49,7 @@ class AmazonBookScrapingService
           next
         end
       end
-    # end
+    end
   end
 
   private
@@ -61,7 +61,11 @@ class AmazonBookScrapingService
 
   def process_url(url)
     html_file = HTTParty.get(url)
-    Nokogiri::HTML(html_file)
+    if html_file.code == 200
+      Nokogiri::HTML(html_file)
+    else
+      binding.pry
+    end
   end
 
   def process_reviews(reviews)
