@@ -1,6 +1,7 @@
 class StaticPagesController < ApplicationController
    skip_before_action :authenticate_user!, only: [:index, :show, :about, :collection, :all_collections, :search_collections]
-  def index
+   
+  def home
   end
 
   def show
