@@ -1,0 +1,17 @@
+<div class="container">
+  <h2><%= @collection.name %></h2>
+  <% @books.each do |book| %>
+    <div class="book-card">
+      <div class="book-cover"><%= cl_image_tag(book.book_image.url(:thumbnail))%></div>
+      <div class="book-body">
+        <h4><strong><%= book.title%></strong></h4>
+        <h5>By <%= book.author %>  </h5>
+        <p><%= book.description%></p>
+      </div>
+      <div class="book-analysis">
+        <h4><strong>Social sentiment</strong></h4>
+        <h5> </h5>
+      </div> 
+    </div>
+  <% end %>
+</div>

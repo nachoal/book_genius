@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_07_194333) do
+ActiveRecord::Schema.define(version: 2018_11_08_232238) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,15 @@ ActiveRecord::Schema.define(version: 2018_11_07_194333) do
     t.index ["book_id"], name: "index_aylien_book_results_on_book_id"
   end
 
+  create_table "book_collections", force: :cascade do |t|
+    t.bigint "collection_id"
+    t.bigint "book_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["book_id"], name: "index_book_collections_on_book_id"
+    t.index ["collection_id"], name: "index_book_collections_on_collection_id"
+  end
+
   create_table "books", force: :cascade do |t|
     t.string "title"
     t.text "description"
@@ -45,6 +54,12 @@ ActiveRecord::Schema.define(version: 2018_11_07_194333) do
     t.datetime "updated_at", null: false
     t.string "category"
     t.string "nyt_review_url"
+  end
+
+  create_table "collections", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "name"
   end
 
   create_table "tweets", force: :cascade do |t|
@@ -71,5 +86,7 @@ ActiveRecord::Schema.define(version: 2018_11_07_194333) do
 
   add_foreign_key "amazon_reviews", "books"
   add_foreign_key "aylien_book_results", "books"
+  add_foreign_key "book_collections", "books"
+  add_foreign_key "book_collections", "collections"
   add_foreign_key "tweets", "books"
 end
