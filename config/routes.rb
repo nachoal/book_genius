@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :books do
     collection do
       get :search
+      get :google_search
     end
   end
 

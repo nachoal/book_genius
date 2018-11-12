@@ -13,13 +13,6 @@ function addBook(bookHTML) {
 }
 
 
-// GET request
-api_key = ENV['GOOGLE_BOOKS_API']
-url = "https://www.googleapis.com/books/v1/volumes?q=#{params[:search]}&key=#{api_key}"
-
-// Obtain result(s) from Google and display it/them on the page
-
-
 // Get result from Google
 const people = document.getElementById("people");
 

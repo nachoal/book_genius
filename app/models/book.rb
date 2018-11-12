@@ -22,15 +22,14 @@ class Book < ApplicationRecord
     if search
       search_by_category_title_author_and_publisher(search)
     else
-      Book.all
+      Book.all # not ideal at all with regards to pundit... Should be moved to controller if no way to return the "root" search withouth putting book.all
     end
   end
 
   def self.new_with_google_json(json)
-    params = {
-      title: json['title'],
-      author: json['author']
+    {
+      book: Book.new(json),
+      image_url: json[:book_image]
     }
-    new(params)
   end
 end

@@ -1,10 +1,10 @@
 <div class="container">
-  <h2>Book list</h2>
     <%= render 'book_list' %>
 </div>
 
 <% if @books.empty? %>
-  <%= javascript_tag do %>
-    fetch('/books/google_search?search=parameters_of_the_search').then(response => response.json()).then(data => ());
+  <% content_for :after_js do %>
+    <!-- user feedback -->
+    $.get('books/google_search?search=<%= params[:search] %>')
   <% end %>
 <% end %>

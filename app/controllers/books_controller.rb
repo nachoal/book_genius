@@ -6,12 +6,15 @@ class BooksController < ApplicationController
   end
 
   def google_search
-
-    results = HTTpppppp
-    items = results['items']
-    @books = items.map do |item|
-      Book.new_with_google_json(item)
+    google_books = GoogleBooksService.new.lists(params[:search])
+    # @books = google_books.map do |book|
+    #   Book.new_with_google_json(book)
+    # end
+    @books = []
+    google_books.each do |book|
+      @books << Book.new_with_google_json(book)
     end
+    @books
   end
 
   def search
