@@ -6,18 +6,48 @@ class Book < ApplicationRecord
   has_many :collections, through: :book_collections
   mount_uploader :book_image, PhotoUploader
 
-  scope :no_tweets, -> { left_joins(:tweets).where('tweets.book_id IS NULL') }
+  include PgSearch
+  pg_search_scope :search_by_category_title_author_and_publisher,
+                  against: %i[category title author publisher],
+                  ignoring: :accents,
+                  using: {
+                    tsearch: {
+                      prefix: true,
+                      any_word: true,
+                    },
+                    trigram: {
+                      only: %i[title author],
+                    },
+                  }
+
+  scope :no_tweets, -> { left_joins(:tweets).where("tweets.book_id IS NULL") }
   instance_eval { alias without_tweets no_tweets }
 
-  scope :no_aylien_results, -> { left_joins(:aylien_book_results).where('aylien_book_results.book_id IS NULL') }
+  scope :no_aylien_results, -> { left_joins(:aylien_book_results).where("aylien_book_results.book_id IS NULL") }
 
-  scope :no_twitter_aylien, -> { left_joins(:aylien_book_results).where('aylien_book_results.aylien_twitter_json IS NULL')}
+  scope :no_twitter_aylien, -> { left_joins(:aylien_book_results).where("aylien_book_results.aylien_twitter_json IS NULL")}
+
+  def self.search(search)
+    if search.present?
+      search_by_category_title_author_and_publisher(search)
+    else
+      Book.all # not ideal at all with regards to pundit...
+    end
+  end
+
+  def self.new_with_google_json(json)
+    {
+      book: Book.new(json),
+      image_url: json[:book_image],
+    }
+  end
+
   def aylien_result
     aylien_book_results.first
   end
 
-  def twitter_sentiment 
-     aylien_book_results.first.aylien_twitter_json.nil? ? "Not enough twitter comments found" : aylien_book_results.first.aylien_twitter_json['polarity']
+  def twitter_sentiment
+    aylien_book_results.first.aylien_twitter_json.nil? ? "Not enough twitter comments found" : aylien_book_results.first.aylien_twitter_json["polarity"]
   end
 
   def translate_to_emoji(string)
@@ -27,19 +57,19 @@ class Book < ApplicationRecord
     when "positive"
       '😄'
     when "negative"
-      '🤬'    
+      '🤬'
     end
   end
 
   def twitter_polarity_score
-    aylien_book_results.first.aylien_twitter_json['polarity_confidence']
+    aylien_book_results.first.aylien_twitter_json["polarity_confidence"]
   end
 
   def amazon_sentiment
-    aylien_book_results.first.aylien_amazon_json['polarity']
+    aylien_book_results.first.aylien_amazon_json["polarity"]
   end
 
   def amazon_polarity_score
-    aylien_book_results.first.aylien_amazon_json['polarity_confidence']
+    aylien_book_results.first.aylien_amazon_json["polarity_confidence"]
   end
 end
