@@ -1,4 +1,4 @@
-<div class="navbar-wagon">
+<div class="navbar-wagon <%= action_name == 'about' ? 'navbar-fixed-top' : '' %>">
   <!-- Logo -->
   <%= link_to root_path, class: "navbar-wagon-brand" do %>
     <%= image_tag("https://i.postimg.cc/sxTMnp6P/Bildschirmfoto-2018-11-07-um-15-36-29.png", height: 80) %>
