@@ -20,4 +20,8 @@ class BooksController < ApplicationController
       format.js
     end
   end
+
+  def show
+    @book = Book.find(params[:id])
+  end
 end

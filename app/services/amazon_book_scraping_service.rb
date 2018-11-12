@@ -28,7 +28,7 @@ class AmazonBookScrapingService
       url_str = url(data_asin, page)
       reviews = process_url(url_str).xpath('//span[@data-hook="review-body"]')
       i = 1
-      reviews.each do |review|
+      reviews.take(5).each do |review|
         puts "Book (ASIN: #{data_asin}): Fetching review #{i} of page #{page}"
         review_list << review.children.text
         puts "Waiting 0.5 sec before fetching next review"
@@ -44,8 +44,8 @@ class AmazonBookScrapingService
     review_list
   end
 
-  def seed_db(book_num, max_page)
-    Book.take(book_num).each do |book|
+  def seed_db(max_page)
+    Book.all.each do |book|
       input = "#{book.title} #{book.author} #{book.publisher}"
       data_asin = get_book_data_asin(input)
       get_all_book_reviews(data_asin, max_page).each do |review|
