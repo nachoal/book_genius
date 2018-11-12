@@ -2,15 +2,15 @@
   <h2>Book list</h2>
   <% @books.each do |book| %>
     <div class="book-card">
-      <div class="book-cover"><%= cl_image_tag(book.book_image.url(:thumbnail))%></div>
+      <div class="book-cover"><%= link_to(cl_image_tag(book.book_image.url(:thumbnail)), book)%></div>
       <div class="book-body">
-        <h4><strong><%= book.title%></strong></h4>
+        <h4><strong><%= link_to(book.title, book)%></strong></h4>
         <h5>By <%= book.author %>  </h5>
         <p><%= book.description%></p>
       </div>
       <div class="book-analysis">
-        <h4><strong>Social sentiment</strong></h4>
-        <h5></h5>
+        <h4 style="text-align:center"><strong>Social sentiment</strong></h4>
+        <h5 style="font-size: 80px; text-align:center"><%=  book.translate_to_emoji(book.twitter_sentiment) %></h5>
       </div>
     </div>
   <% end %>

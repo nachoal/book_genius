@@ -18,13 +18,23 @@ class AylienService
     books.each do |book|
       p appended_tweets = book.tweets.map { |twit| twit.tweet }.join(' ')
       p appended_reviews = book.amazon_reviews.map { |review| review.review  }.join(' ')
-      p aylien_results = AylienBookResult.new(
+        aylien_results = AylienBookResult.new(
         aylien_twitter_json: text_api.sentiment(text: appended_tweets),
         aylien_amazon_json: text_api.sentiment(text: appended_reviews),
         aylien_nyt_json: text_api.sentiment(url: book.nyt_review_url),
         book: book
       )
       p aylien_results.save
+    end
+  end
+
+  def self.missing_aggregated_tweets
+    books = Book.no_twitter_aylien
+    books.each do |book|
+      appended_tweets = book.tweets.map { |twit| twit.tweet }.join(' ')
+      p "appended tweets? #{!appended_tweets.empty?}"
+      p "updating #{book.title} with the appended tweets"
+      book.aylien_book_results.first.update(aylien_twitter_json: text_api.sentiment(text: appended_tweets) )
     end
   end
 
