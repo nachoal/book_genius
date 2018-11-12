@@ -19,7 +19,7 @@ class Book < ApplicationRecord
                   }
 
   def self.search(search)
-    if search
+    if search.present?
       search_by_category_title_author_and_publisher(search)
     else
       Book.all # not ideal at all with regards to pundit... Should be moved to controller if no way to return the "root" search withouth putting book.all

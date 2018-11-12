@@ -7,9 +7,6 @@ class BooksController < ApplicationController
 
   def google_search
     google_books = GoogleBooksService.new.lists(params[:search])
-    # @books = google_books.map do |book|
-    #   Book.new_with_google_json(book)
-    # end
     @books = []
     google_books.each do |book|
       @books << Book.new_with_google_json(book)
