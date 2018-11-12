@@ -100,3 +100,14 @@
   left: 10px;
   color: #ff0000;
 }
+
+// Navbar home display
+.navbar-wagon.navbar-fixed-top {
+  border: none;
+  background: none;
+  box-shadow: none;
+
+  .search {
+    display: none
+  }
+}
