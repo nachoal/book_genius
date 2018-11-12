@@ -29,6 +29,9 @@ gem 'faker'
 # OpenSSL provides SSL, TLS and general purpose cryptography. It wraps the OpenSSL library.
 gem 'openssl'
 
+# For search
+gem 'pg_search'
+
 group :development do
   gem 'web-console', '>= 3.3.0'
 end
