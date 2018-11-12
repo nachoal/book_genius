@@ -1,5 +1,6 @@
 class NYTService
   include HTTParty
+
   base_uri 'https://api.nytimes.com/svc/books/v3/lists'
 
   def initialize

@@ -6,10 +6,13 @@
 
   <!-- Right Navigation -->
   <div class="search">
-    <span class="fa fa-search"></span>
-    <input placeholder="Books, books, books">
+    <span id="book_search" class="fa fa-search"></span>
+    <%= form_tag(search_books_path, {class: 'form-inline', method: 'get'}) do %>
+      <%= text_field_tag :search, "", class: "form-control" %>
+      <%= submit_tag 'Search', class: "btn btn-outline-success"%>
+    <% end %>&nbsp;
+    <!-- <input placeholder="Books, books, books"> -->
   </div>
-
 
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">

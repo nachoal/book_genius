@@ -1,7 +1,13 @@
 Rails.application.routes.draw do
   root to: 'books#index'
   devise_for :users
-  resources :books
+
+  resources :books do
+    collection do
+      get :search
+    end
+  end
+
   resources :static_pages
   get '/about', to: 'static_pages#about'
   get '/collection', to: 'static_pages#collection'
