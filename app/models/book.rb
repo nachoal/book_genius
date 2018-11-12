@@ -41,6 +41,10 @@ class Book < ApplicationRecord
       image_url: json[:book_image],
     }
   end
+  
+  scope :no_twitter_aylien, -> { left_joins(:aylien_book_results).where('aylien_book_results.aylien_twitter_json IS NULL')}
+
+  scope :with_image, -> { where.not(book_image: '') }
 
   def aylien_result
     aylien_book_results.first
@@ -71,5 +75,15 @@ class Book < ApplicationRecord
 
   def amazon_polarity_score
     aylien_book_results.first.aylien_amazon_json["polarity_confidence"]
+  end
+
+  def self.random(count)
+    with_image.order('random()').limit(count)
+  end
+
+  def self.random_images(count)
+    with_image.order('random()').limit(count).map do |book|
+      book.book_image.url(:thumbnail)
+    end
   end
 end

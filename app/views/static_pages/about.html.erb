@@ -1,5 +1,5 @@
 <div class="banner">
-  <div class="item-search-bar">
+  <div class="landing-search-bar">
     <div class="landing-header">
       <h1> Sad, amused, inspired, ... ??? </h1>
       <div class="search">
@@ -8,36 +8,10 @@
       </div>
     </div>
   </div>
-  <div class="item">
-  </div>
-  <div class="item">
-  </div>
-  <div class="item">
-  </div>
-  <div class="item">
-  </div>
-  <div class="item">
-  </div>
-  <div class="item">
-  </div>
-  <div class="item">
-  </div>
-  <div class="item">
-  </div>
-  <div class="item">
-  </div>
-  <div class="item">
-  </div>
-  <div class="item">
-  </div>
-  <div class="item">
-  </div>
-  <div class="item">
-  </div>
-  <div class="item">
-  </div>
-  <div class="item">
-  </div>
+  <% @tile_images.each do |tile_image| %>
+    <div class="item" style='background-image: url(<%= cl_image_path(
+    tile_image) %>);'></div>
+  <% end %>
 </div>
 
 
