@@ -1,8 +1,21 @@
 .book-card {
   display: flex;
+  align-items: space-between;
   margin-bottom: 20px;
 }
 
 .book-card .book-body {
   margin-left: 20px;
+}
+
+.book-cover {
+  flex: 0 0 20%;
+}
+
+.book-body {
+  flex: 0 0 60%;
+}
+
+.book-analysis {
+  flex: 0 0 20%;
 }
