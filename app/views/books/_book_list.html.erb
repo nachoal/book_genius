@@ -1,4 +1,8 @@
-<h2>Book list</h2>
+<% if params[:search].present? %>
+  <h2><%= @books.count %> book matching your search: "<%= params[:search] %>"</h2>
+<% else %>
+  <h2>Book list</h2>
+<% end %>
 <% @books.each do |book| %>
   <div class="book-card">
     <div class="book-cover"><%= link_to(cl_image_tag(book.book_image.url(:thumbnail)), book)%></div>

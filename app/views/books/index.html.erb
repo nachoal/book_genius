@@ -2,7 +2,7 @@
     <%= render 'book_list' %>
 </div>
 
-<% if params[:search].present? && @books.empty? %>
+<% if params[:search].present? %> <!-- && @books.empty? -->
   <% content_for :after_js do %>
     <!-- user feedback -->
     $.get('books/google_search?search=<%= params[:search] %>')
