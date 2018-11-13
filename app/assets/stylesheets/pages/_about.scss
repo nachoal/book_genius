@@ -1,0 +1,45 @@
+.banner {
+  display: flex;
+  position: relative;
+  flex-wrap: wrap;
+  width: 100vw;
+}
+
+.item {
+  height: 10vw;
+  width: 10vw;
+  box-sizing: border-box;
+  border: 1px solid rgba(220, 220, 220, 0.3);
+  border-radius: 5px;
+  background-position: center;
+  background-size: cover;
+  transition: all 1s;
+  opacity: .3;
+}
+
+.item:hover{
+  opacity: 1;
+}
+
+.landing-search-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.landing-header {
+  text-align: center;
+  height: 20vw;
+  width: 60vw;
+  background-color: rgba(255, 255, 255, 0.85);
+  z-index: 2;
+}
+
+.landing-header h1 {
+  font-weight: bold;
+}

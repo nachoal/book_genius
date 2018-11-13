@@ -1,3 +1,5 @@
+import $ from 'jquery';
+window.$ = $;
 import "bootstrap";
 import Chartkick from "chartkick";
 window.Chartkick = Chartkick;

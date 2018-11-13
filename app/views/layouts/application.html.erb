@@ -14,7 +14,13 @@
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
     <%= javascript_pack_tag 'application' %>
+<<<<<<< HEAD
     <%= javascript_include_tag 'application' %>
     <%= yield %>
+=======
+    <%= javascript_tag do %>
+      <%= yield :after_js %>
+    <% end %>
+>>>>>>> 45345b77bd0ed1ef624247ea0abdc2741a299217
   </body>
 </html>

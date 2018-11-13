@@ -1,0 +1,39 @@
+function refreshSearchForm(innerHTML) {
+  const newSearchForm = document.getElementById('book_search');
+  newSearchForm.innerHTML = innerHTML;
+}
+
+function addBook(bookHTML) {
+  const document.querySelector('.container').innerHTML = '';
+  // <%= j render "reviews/form", restaurant: @restaurant, review: @review %>
+
+  // const books = document.getElementById('reviews');
+
+  // reviews.insertAdjacentHTML('beforeend', reviewHTML);
+}
+
+
+// Get result from Google
+const people = document.getElementById("people");
+
+fetch(url).then((response) => {
+  .then(response => response.json())
+  .then((data) => {
+    data.results.forEach((person) => {
+      const item = `<li>${person.name}</li>`;
+      people.insertAdjacentHTML("beforeend", item);
+    });
+  });
+});
+
+// Render result in a "Standard" book card
+
+// User select one results that populates the s
+
+
+<% if @review.errors.any? %>
+  refreshForm('<%= j render "reviews/form", restaurant: @restaurant, review: @review %>');
+<% else %>
+  addReview('<%= j render "reviews/show", review: @review %>');
+  refreshForm('<%= j render "reviews/form", restaurant: @restaurant, review: Review.new %>');
+<% end %>

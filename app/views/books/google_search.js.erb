@@ -1,0 +1,4 @@
+books_html = '<%= j render "books/google_book_list", books: @books %>';
+// document.querySelector('.container').innerHTML = '';
+books = document.querySelector('.container');
+books.insertAdjacentHTML('beforeend', books_html);

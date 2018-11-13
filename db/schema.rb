@@ -10,10 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2018_11_12_193350) do
+=======
+ActiveRecord::Schema.define(version: 2018_11_09_183534) do
+>>>>>>> 45345b77bd0ed1ef624247ea0abdc2741a299217
 
   # These are extensions that must be enabled in order to support this database
+  enable_extension "fuzzystrmatch"
+  enable_extension "pg_trgm"
   enable_extension "plpgsql"
+  enable_extension "unaccent"
 
   create_table "amazon_reviews", force: :cascade do |t|
     t.text "review"

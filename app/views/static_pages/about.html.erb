@@ -1,1 +1,17 @@
+<div class="banner">
+  <div class="landing-search-bar">
+    <div class="landing-header">
+      <h1> Sad, amused, inspired, ... ??? </h1>
+      <div class="search">
+        <span class="fa fa-search"></span>
+        <input placeholder="Books, books, books">
+      </div>
+    </div>
+  </div>
+  <% @tile_images.each do |tile_image| %>
+    <div class="item" style='background-image: url(<%= cl_image_path(
+    tile_image) %>);'></div>
+  <% end %>
+</div>
+
 

@@ -1,36 +1,11 @@
 <div class="container">
-  <h2>Book list</h2>
-  <% @books.each do |book| %>
-    <div class="book-card">
-      <div class="book-cover"><%= link_to(cl_image_tag(book.book_image.url(:thumbnail)), book)%></div>
-      <div class="book-body">
-        <h4><strong><%= link_to(book.title, book)%></strong></h4>
-        <h5>By <%= book.author %>  </h5>
-        <p><%= book.description%></p>
-      </div>
-      <div class="book-twitter">
-        <%= pie_chart book.count_polarity, donut: true, legend: false, width: "150px", height: "150px" %>
-      </div>
-      <div class="book-mentions">
-        <%= line_chart(book.tweets.group_by_day(:creation_date).count, width: "150px", height: "150px", library: {
-          layout: {
-                    padding: {left: 10, right: 5, top: 5, bottom: 2}
-          },
-          scales: {
-        xAxes: [{
-          display: false, 
-          gridLines: {
-            display: false,
-          }
-        }],
-        yAxes: [{
-          display: false,
-          gridLines: {
-            display: false,
-          }
-        }]
-      }})%>
-      </div>
-    </div>
-  <% end %>
+    <%= render 'book_list' %>
 </div>
+
+<% if params[:search].present? %> <!-- && @books.empty? -->
+  <% content_for :after_js do %>
+    <!-- user feedback -->
+    $.get('books/google_search?search=<%= params[:search] %>')
+  <% end %>
+<% end %>
+  <%= raise %>

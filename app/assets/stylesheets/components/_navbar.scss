@@ -33,6 +33,9 @@
 .navbar-wagon-item {
   cursor: pointer;
   padding: 0 20px;
+  border-radius: 15px;
+  background: white;
+  padding: 10px;
 }
 
 /* Navbar link */
@@ -99,4 +102,15 @@
   top: 10px;
   left: 10px;
   color: #ff0000;
+}
+
+// Navbar home display
+.navbar-wagon.navbar-fixed-top {
+  border: none;
+  background: none;
+  box-shadow: none;
+
+  .search {
+    display: none
+  }
 }
