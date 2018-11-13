@@ -86,4 +86,12 @@ class Book < ApplicationRecord
       book.book_image.url(:thumbnail)
     end
   end
+
+  def count_polarity
+    counter = Hash.new(0)
+    self.tweets.each do |tweet|
+      counter[tweet.aylient_result_json['polarity']] += 1 unless tweet.aylient_result_json.nil?
+    end
+    counter
+  end
 end

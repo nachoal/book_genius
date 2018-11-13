@@ -45,6 +45,33 @@ class AylienService
     end
   end
 
+  def self.book_individual_tweet_sentiment
+    books = Book.all[0..9]
+    books.each do |book|
+      if book.tweets.size > 50
+        book.tweets[0..49].each do |tweet|
+          tweet.update(aylient_result_json: AylienService.text_api.sentiment(text: tweet.tweet))
+        end
+      else
+        book.tweets[0..tweets.size].each do |tweet|
+          tweet.update(aylient_result_json: AylienService.text_api.sentiment(text: tweet.tweet))
+        end
+      end
+    end
+  end
+
+  def self.single_book_individual_tweet_sentiment(book)
+    if book.tweets.size > 50
+      book.tweets[0..49].each do |tweet|
+        tweet.update(aylient_result_json: AylienService.text_api.sentiment(text: tweet.tweet))
+      end
+    else
+      book.tweets[0..tweets.size].each do |tweet|
+        tweet.update(aylient_result_json: AylienService.text_api.sentiment(text: tweet.tweet))
+      end
+    end
+  end
+
   def self.individual_review_sentiment
     reviews = AmazonReview.all
     reviews.each do |review|

@@ -28,7 +28,25 @@ class TwitterService
         p "creating tweets for book #{book.id}"
           book.tweets.create(
           tweet: tweety.text,
-          tweet_location: tweety.user.location
+          tweet_location: tweety.user.location,
+          creation_date: tweety.created_at
+        )
+      end
+    end
+  end
+
+  def self.tweet_update(books = nil)
+    books ||= Book.all
+    books = [books] if books.is_a?(Book)
+    books.each do |book|
+      # destroy all tweets before creating new tweets
+      book.tweets.each {|tweet| tweet.destroy}
+      client.search("#{book.title} book -rt", lang: 'en').each do |tweety|
+        p "creating tweets for book #{book.id}"
+          book.tweets.create(
+          tweet: tweety.text,
+          tweet_location: tweety.user.location,
+          creation_date: tweety.created_at
         )
       end
     end

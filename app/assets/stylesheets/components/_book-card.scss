@@ -13,9 +13,32 @@
 }
 
 .book-body {
-  flex: 0 0 60%;
+  flex: 0 0 40%;
 }
 
-.book-analysis {
+.book-twitter {
   flex: 0 0 20%;
+}
+
+.book-mentions {
+  flex: 0 0 20%
+}
+
+
+// Book show page CSS
+
+.book-show {
+  display: flex;
+  align-items: space-between;
+  margin-top: 50px;
+}
+
+
+.book-show-cover {
+  flex: 0 0 20%;
+}
+
+.book-show-description {
+  flex: 0 0 80%;
+  margin-top: -25px;
 }
