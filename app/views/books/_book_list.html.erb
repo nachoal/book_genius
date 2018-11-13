@@ -2,9 +2,20 @@
 
 <% if params[:search].present? %>
   <h2><%= @books.count %> book matching your search: "<%= params[:search] %>"</h2>
-<% else %>
-  <h2>Book list</h2>
 <% end %>
+<div class="titles">
+  <div class="book-cover">
+  </div>
+  <div class="book-body">
+    <h2>Description</h2>
+  </div>
+  <div class="book-twitter" >
+    <h2>Sentiment</h2>
+  </div>
+  <div class="book-mentions" style="text-align: center">
+    <h2>Mentions</h2>
+  </div>
+</div>
 <% @books.each do |book| %>
   <div class="book-card">
     <div class="book-cover"><%= link_to(cl_image_tag(book.book_image.url(:thumbnail), width: 178, height: 256), book)%></div>
@@ -14,10 +25,10 @@
       <p><%= book.description%></p>
     </div>
     <div class="book-twitter">
-      <%= pie_chart book.count_polarity, donut: true, legend: false, width: "150px", height: "150px" %>
+      <%= pie_chart book.count_polarity, donut: true, legend: false, width: "150px", height: "150px", colors: ['#ffcd30','#0DD970','#f37632'] %>
     </div>
     <div class="book-mentions">
-      <%= line_chart(book.tweets.group_by_day(:creation_date).count, width: "150px", height: "150px", library: {
+      <%= line_chart(book.tweets.group_by_day(:creation_date).count, width: "150px", height: "150px",colors: ["#0DD970"], library: {
           layout: {
                     padding: {left: 10, right: 5, top: 5, bottom: 2}
           },
