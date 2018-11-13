@@ -41,7 +41,7 @@ class Book < ApplicationRecord
       image_url: json[:book_image],
     }
   end
-  
+
   scope :no_twitter_aylien, -> { left_joins(:aylien_book_results).where('aylien_book_results.aylien_twitter_json IS NULL')}
 
   scope :with_image, -> { where.not(book_image: '') }
@@ -51,7 +51,7 @@ class Book < ApplicationRecord
   end
 
   def twitter_sentiment
-    aylien_book_results.first.aylien_twitter_json.nil? ? "Not enough twitter comments found" : aylien_book_results.first.aylien_twitter_json["polarity"]
+    aylien_book_results.first.nil? ? "Not enough twitter comments found" : aylien_book_results.first.aylien_twitter_json["polarity"]
   end
 
   def translate_to_emoji(string)
