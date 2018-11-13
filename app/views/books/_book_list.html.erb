@@ -5,7 +5,7 @@
 <% end %>
 <% @books.each do |book| %>
   <div class="book-card">
-    <div class="book-cover"><%= link_to(cl_image_tag(book.book_image.url(:thumbnail)), book)%></div>
+    <div class="book-cover"><%= link_to(cl_image_tag(book.book_image.url(:thumbnail), width: 178, height: 256), book)%></div>
     <div class="book-body">
       <h4><strong><%= link_to(book.title, book)%></strong></h4>
       <h5>By <%= book.author %>  </h5>
