@@ -1,9 +1,17 @@
 class GoogleBooksService
-
   def lists(search)
     book_list = []
     api_key = ENV['GOOGLE_BOOKS_API']
-    doc = HTTParty.get("https://www.googleapis.com/books/v1/volumes?q=#{search}&printType=books&langRestrict=en&orderBy=newest&key=#{api_key}")
+    doc = HTTParty.get(
+      'https://www.googleapis.com/books/v1/volumes',
+      query: {
+        q: search,
+        printType: 'books',
+        langRestrict: 'en',
+        orderBy: 'newest',
+        key: api_key
+      }
+    )
     doc['items'].each do |item|
       volumeInfo = item['volumeInfo']
       image_url = volumeInfo['imageLinks']['thumbnail'].nil? ? 'https://via.placeholder.com/326x495' : volumeInfo['imageLinks']['thumbnail']
