@@ -1,6 +1,6 @@
 class StaticPagesController < ApplicationController
    skip_before_action :authenticate_user!, only: [:index, :show, :about, :collection, :all_collections, :search_collections]
-   
+
   def home
   end
 
@@ -8,6 +8,9 @@ class StaticPagesController < ApplicationController
   end
 
   def about
+    book_images = Book.random_images(45)
+    emoji_images = Emoji.random_images(15)
+    @tile_images = (book_images + emoji_images).shuffle
   end
 
   def collection
