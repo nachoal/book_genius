@@ -9,10 +9,10 @@
       <p><%= book.description[0..250].gsub(/\s\w+\s*$/,'...') %></p>
     </div>
     <div class="book-twitter">
-      <%= pie_chart book.count_polarity, donut: true, legend: false, width: "150px", height: "150px" %>
+      <%= pie_chart book.count_polarity, donut: true, legend: false, width: "150px", height: "150px", colors: ['#ffcd30','#0DD970','#f37632'] %>
     </div>
     <div class="book-mentions">
-      <%= line_chart(book.tweets.group_by_day(:creation_date).count, width: "150px", height: "150px", library: {
+      <%= line_chart(book.tweets.group_by_day(:creation_date).count, width: "150px", height: "150px",colors: ["#0DD970"], library: {
           layout: {
                     padding: {left: 10, right: 5, top: 5, bottom: 2}
           },

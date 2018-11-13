@@ -103,4 +103,21 @@ class Book < ApplicationRecord
     end
     counter
   end
+
+  def polarity_percentages
+    if count_polarity.empty?
+      "empty"
+    else
+      polarities = []
+      polarity_result = count_polarity
+      polarity_result.each {|_,v| polarities << v}
+      sum = polarities.inject(:+)
+      percent = 100
+      neutral = polarity_result['neutral']
+      positive = polarity_result['positive']
+      negative = polarity_result['negative']
+      percentages = [neutral, positive, negative]
+      percentages.map! { |pe| (pe * percent) / sum }
+    end
+  end
 end
