@@ -63,6 +63,7 @@ GEM
       activemodel (>= 4.0.0)
       activesupport (>= 4.0.0)
       mime-types (>= 1.16)
+    chartkick (3.0.1)
     cloudinary (1.9.1)
       aws_cf_signer
       rest-client
@@ -89,8 +90,11 @@ GEM
     ffi (1.9.25)
     font-awesome-sass (5.0.13)
       sassc (>= 1.11)
+    geocoder (1.5.0)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
+    groupdate (4.1.0)
+      activesupport (>= 4.2)
     http (3.3.0)
       addressable (~> 2.3)
       http-cookie (~> 1.0)
@@ -265,11 +269,14 @@ DEPENDENCIES
   bootsnap
   bootstrap-sass (~> 3.3)
   carrierwave (~> 1.2)
+  chartkick
   cloudinary
   devise
   dotenv-rails
   faker
   font-awesome-sass (~> 5.0.9)
+  geocoder
+  groupdate
   httparty
   jbuilder (~> 2.0)
   listen (~> 3.0.5)

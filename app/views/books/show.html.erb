@@ -1,3 +1,33 @@
 <div class="container">
-  <%= cl_image_tag(@book.book_image.url(:thumbnail))%>
+  <div class="book-show">
+    <div class="book-show-cover">
+      <%= cl_image_tag(@book.book_image.url, width: 200, height: 296)%>
+    </div>
+    <div class="book-show-description">
+      <h3><%= @book.title %></h3>
+      <h4>By <%= @book.author %></h4>
+      <p><%= @book.description %></p>
+      <h4>Social sentiment</h4>
+      <p style="font-size: 80px; text-align:left"><%=  @book.translate_to_emoji(@book.twitter_sentiment) %></p>
+    </div>
+  </div>
+  <div class="book-analysis">
+      <%= line_chart @book.tweets.group_by_day(:creation_date).count %>
+    <h4><strong>What people are saying on twitter:</strong></h4>
+    <div class="book-twitter">
+      <ol>
+        <% @book.tweets.each do |tweet| %>
+          <li><%= tweet.tweet %> </li>
+        <% end %>
+      </ol>
+    </div>
+    <h4><strong>What people are saying on Amazon:</strong></h4>
+    <div class="book-amazon">
+      <ol>
+        <% @book.amazon_reviews.each do |review| %>
+          <li><%= review.review %> </li>
+        <% end %>
+      </ol>
+    </div>
+  </div>
 </div>

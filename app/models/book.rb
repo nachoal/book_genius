@@ -42,4 +42,12 @@ class Book < ApplicationRecord
   def amazon_polarity_score
     aylien_book_results.first.aylien_amazon_json['polarity_confidence']
   end
+
+  def count_polarity
+    counter = Hash.new(0)
+    self.tweets.each do |tweet|
+      counter[tweet.aylient_result_json['polarity']] += 1 unless tweet.aylient_result_json.nil?
+    end
+    counter
+  end
 end

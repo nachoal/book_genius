@@ -10,7 +10,7 @@ class PhotoUploader < CarrierWave::Uploader::Base
   end
 
   version :small_cover do
-    resize_to_fit 326, 495
+    resize_to_fit 150, 226
   end
 
 end

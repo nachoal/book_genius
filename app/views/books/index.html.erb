@@ -8,9 +8,28 @@
         <h5>By <%= book.author %>  </h5>
         <p><%= book.description%></p>
       </div>
-      <div class="book-analysis">
-        <h4 style="text-align:center"><strong>Social sentiment</strong></h4>
-        <h5 style="font-size: 80px; text-align:center"><%=  book.translate_to_emoji(book.twitter_sentiment) %></h5>
+      <div class="book-twitter">
+        <%= pie_chart book.count_polarity, donut: true, legend: false, width: "150px", height: "150px" %>
+      </div>
+      <div class="book-mentions">
+        <%= line_chart(book.tweets.group_by_day(:creation_date).count, width: "150px", height: "150px", library: {
+          layout: {
+                    padding: {left: 10, right: 5, top: 5, bottom: 2}
+          },
+          scales: {
+        xAxes: [{
+          display: false, 
+          gridLines: {
+            display: false,
+          }
+        }],
+        yAxes: [{
+          display: false,
+          gridLines: {
+            display: false,
+          }
+        }]
+      }})%>
       </div>
     </div>
   <% end %>
