@@ -13,6 +13,12 @@
   border-radius: 5px;
   background-position: center;
   background-size: cover;
+  transition: all 1s;
+  opacity: .3;
+}
+
+.item:hover{
+  opacity: 1;
 }
 
 .landing-search-bar {
@@ -30,5 +36,10 @@
   text-align: center;
   height: 20vw;
   width: 60vw;
-  background-color: rgba(255, 255, 255, 0.8)
+  background-color: rgba(255, 255, 255, 0.85);
+  z-index: 2;
+}
+
+.landing-header h1 {
+  font-weight: bold;
 }
