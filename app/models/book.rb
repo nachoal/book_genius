@@ -51,7 +51,14 @@ class Book < ApplicationRecord
   end
 
   def twitter_sentiment
-    aylien_book_results.first.nil? ? "Not enough twitter comments found" : aylien_book_results.first.aylien_twitter_json["polarity"]
+    if aylien_book_results.first.nil?
+      "No sentiment analysis available"
+    elsif aylien_book_results.first.aylien_twitter_json.nil?
+      "Not enough twitter comments found"
+    else
+      aylien_book_results.first.aylien_twitter_json["polarity"]
+    end
+    # aylien_book_results.first.nil? && aylien_book_results.first.aylien_twitter_json.nil? ? "Not enough twitter comments found" : aylien_book_results.first.aylien_twitter_json["polarity"]
   end
 
   def translate_to_emoji(string)
@@ -62,6 +69,8 @@ class Book < ApplicationRecord
       '😄'
     when "negative"
       '🤬'
+    else
+      string
     end
   end
 
