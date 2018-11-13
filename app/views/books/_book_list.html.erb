@@ -1,17 +1,12 @@
 <%= javascript_pack_tag 'charting' %>
 
-<% if params[:search].present? %>
-  <h2><%= @books.count %> book matching your search: "<%= params[:search] %>"</h2>
-<% else %>
-  <h2>Book list</h2>
-<% end %>
 <% @books.each do |book| %>
   <div class="book-card">
     <div class="book-cover"><%= link_to(cl_image_tag(book.book_image.url(:thumbnail), width: 178, height: 256), book)%></div>
     <div class="book-body">
       <h4><strong><%= link_to(book.title, book)%></strong></h4>
       <h5>By <%= book.author %>  </h5>
-      <p><%= book.description%></p>
+      <p><%= book.description[0..250].gsub(/\s\w+\s*$/,'...') %></p>
     </div>
     <div class="book-twitter">
       <%= pie_chart book.count_polarity, donut: true, legend: false, width: "150px", height: "150px" %>
@@ -23,7 +18,7 @@
           },
           scales: {
         xAxes: [{
-          display: false, 
+          display: false,
           gridLines: {
             display: false,
           }

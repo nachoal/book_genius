@@ -1,4 +1,9 @@
 <div class="container">
+  <% if params[:search].present? %>
+    <h2>Books matching your search "<%= params[:search] %>"</h2>
+  <% else %>
+    <h2>Book list</h2>
+  <% end %>
     <%= render 'book_list' %>
 </div>
 
