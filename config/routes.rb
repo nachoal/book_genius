@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: 'collections#index'
+  root to: 'static_pages#about'
   devise_for :users
 
   resources :books do
