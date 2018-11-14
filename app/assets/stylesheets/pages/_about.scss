@@ -37,28 +37,29 @@
 }
 
 .animation-start-0 { animation-name: blink-0; }
-.animation-duration-0 { animation-duration: 4s; }
+.animation-duration-0 { animation-duration: 6s; }
 
 .animation-start-1 { animation-name: blink-1; }
-.animation-duration-1 { animation-duration: 8s; }
+.animation-duration-1 { animation-duration: 10s; }
 
 .animation-start-2 { animation-name: blink-2; }
-.animation-duration-2 { animation-duration: 12s; }
+.animation-duration-2 { animation-duration: 14s; }
 
 .landing-header {
   text-align: center;
-  height: 20vw;
   width: 100vw;
   background-color: rgba(255, 255, 255, 1);
   z-index: 2;
-  padding: 10px;
-  border-radius: 10px;
+  padding: 80px 10px;
+  border-top: 20px solid $red;
+  border-bottom: 20px solid $red;
 }
 
 .landing-header h1 {
   font-weight: bold;
+  margin-top: 40px;
   margin-bottom: 40px;
-  font-family: "Special Elite";
+  font-family: 'Special Elite';
 }
 
 .landing-search-bar {
