@@ -34,14 +34,15 @@
   cursor: pointer;
   padding: 0 20px;
   border-radius: 15px;
+  border: 1px solid $red;
   background: white;
-  padding: 10px 20px 10px 20px;
+  padding: 8px 10px 8px 10px;
   margin: 0px 10px 0px 10px;
 }
 
 /* Navbar link */
 .navbar-wagon-link {
-  color: #616668;
+  color: #000;
   font-size: 14px;
 }
 .navbar-wagon-link:hover {
@@ -52,8 +53,8 @@
 /* Dropdown menu */
 .navbar-wagon-dropdown-menu {
   margin-top: 15px;
-  box-shadow: 1px 1px 4px #E6E6E6;
-  border-color: #E6E6E6;
+  box-shadow: 1px 1px 4px $red;
+  border-color: $red;
 }
 .navbar-wagon-dropdown-menu li > a {
   transition: color 0.3s ease;
@@ -85,6 +86,14 @@
   border: none;
   background: none;
   box-shadow: none;
+
+  .navbar-wagon-item {
+    display: none;
+  }
+
+  .navbar-wagon-brand img {
+    display: none;
+  }
 
   .search {
     display: none

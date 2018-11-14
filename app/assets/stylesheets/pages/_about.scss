@@ -1,3 +1,21 @@
+@keyframes blink-0 {
+  0% { opacity: 0 }
+  50% { opacity: 0.7 }
+  100% { opacity: 0 }
+}
+
+@keyframes blink-1 {
+  0% { opacity: 0.2 }
+  50% { opacity: 0.7 }
+  100% { opacity: 0.2 }
+}
+
+@keyframes blink-2 {
+  0% { opacity: 0.4 }
+  50% { opacity: 0.7 }
+  100% { opacity: 0.4 }
+}
+
 .banner {
   display: flex;
   position: relative;
@@ -6,20 +24,26 @@
 }
 
 .item {
-  height: 10vw;
+  height: 16.667vh;
   width: 10vw;
   box-sizing: border-box;
-  border: 1px solid rgba(220, 220, 220, 0.5);
+  border: 1px solid rgb(255, 255, 255);
   border-radius: 5px;
   background-position: center;
   background-size: cover;
-  transition: all 1s;
+  transition: opacity 0.25s;
   opacity: .5;
+  animation-iteration-count: infinite;
 }
 
-.item:hover {
-  opacity: 1;
-}
+.animation-start-0 { animation-name: blink-0; }
+.animation-duration-0 { animation-duration: 4s; }
+
+.animation-start-1 { animation-name: blink-1; }
+.animation-duration-1 { animation-duration: 8s; }
+
+.animation-start-2 { animation-name: blink-2; }
+.animation-duration-2 { animation-duration: 12s; }
 
 .landing-header {
   text-align: center;
@@ -34,4 +58,16 @@
 .landing-header h1 {
   font-weight: bold;
   margin-bottom: 40px;
+  font-family: "Special Elite";
+}
+
+.landing-search-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
