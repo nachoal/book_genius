@@ -7,28 +7,35 @@
   <div class="book-cover">
   </div>
   <div class="book-body">
-    <h2>Description</h2>
+    <h3>Description</h3>
   </div>
   <div class="book-twitter" >
-    <h2>Sentiment</h2>
+    <h3>Sentiment</h3>
   </div>
   <div class="book-mentions" style="text-align: center">
-    <h2>Mentions</h2>
+    <h3>Mentions</h3>
   </div>
 </div>
 <% @books.each do |book| %>
   <div class="book-card">
-    <div class="book-cover"><%= link_to(cl_image_tag(book.book_image.url(:thumbnail), width: 178, height: 256), book)%></div>
+    <div class="book-cover"> 
+      <div class="image-cover">
+        <%= link_to(cl_image_tag(book.book_image.url(:thumbnail), width: 178, height: 256), book)%>
+      </div>
+    </div>
     <div class="book-body">
       <h4><strong><%= link_to(book.title, book)%></strong></h4>
-      <h5>By <%= book.author %>  </h5>
+      <h5 style="font-style:italic;"><strong>By <%= book.author %> </strong></h5>
       <p><%= book.description%></p>
     </div>
     <div class="book-twitter">
-      <%= pie_chart book.count_polarity, donut: true, legend: false, width: "150px", height: "150px", colors: ['#ffcd30','#0DD970','#f37632'] %>
+      <%# <%= pie_chart book.count_polarity, donut: true, legend: false, width: "150px", height: "150px", colors: ['#ffcd30','#0DD970','#f37632'] %>
+      <p><span style="font-size: 30px;">😍 :<%= book.count_polarity['positive'] %></span></p>
+      <p><span style="font-size: 30px;">😐 :<%= book.count_polarity['neutral'] %></span></p>
+      <p><span style="font-size: 30px;">😡 :<%= book.count_polarity['negative'] %></span></p>
     </div>
     <div class="book-mentions">
-      <%= line_chart(book.tweets.group_by_day(:creation_date).count, width: "150px", height: "150px",colors: ["#0DD970"], library: {
+      <%= line_chart(book.tweets.group_by_day(:creation_date).count, width: "150px", height: "150px",colors: ["#b73535"], library: {
           layout: {
                     padding: {left: 10, right: 5, top: 5, bottom: 2}
           },

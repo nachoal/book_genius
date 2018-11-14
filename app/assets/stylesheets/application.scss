@@ -13,3 +13,27 @@
 @import "layouts/index";
 @import "components/index";
 @import "pages/index";
+
+
+a {
+  color: #b73535;
+}
+
+body {
+  color: #555;
+  background: white;
+}
+
+.navbar-wagon {
+  background: #D3D3D3;
+}
+
+.p {
+  line-height: 1.5;
+}
+
+h1,
+h2,
+strong {
+  color: #333;
+}

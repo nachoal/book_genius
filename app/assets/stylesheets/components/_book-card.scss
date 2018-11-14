@@ -1,8 +1,12 @@
 .titles {
   display: flex;
   align-items: space-between;
+  align-content: center;
   margin-bottom: 20px; 
-
+  
+  .book-body {
+    margin-left: 20px;
+  }
 }
 
 
@@ -12,16 +16,39 @@
   margin-bottom: 20px;
 }
 
+.book-cover img {
+  transform-origin: 0 50%;
+  transform: rotateY(0);
+  transition: all 0.45s ease;
+}
+
+.book-cover:hover img {
+  transform: rotateY(-18deg);
+  box-shadow: 1px 1px 5px 5px rgba(0, 0, 0, 0.2);
+}
+
 .book-card .book-body {
   margin-left: 20px;
 }
 
 .book-cover {
   flex: 0 0 20%;
+  
+  .image-cover{
+    background: #fff9f9;
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 178px !important;
+  }
+
+  img {
+    border-radius: 5px;
+  }
 }
 
 .book-body {
   flex: 0 0 40%;
+  padding-right: 2em;
 }
 
 .book-twitter {
