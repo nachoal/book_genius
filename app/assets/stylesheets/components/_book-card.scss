@@ -1,7 +1,7 @@
 .titles {
   display: flex;
   align-items: space-between;
-  margin-bottom: 20px; 
+  margin-bottom: 20px;
 
 }
 
@@ -30,23 +30,4 @@
 
 .book-mentions {
   flex: 0 0 20%
-}
-
-
-// Book show page CSS
-
-.book-show {
-  display: flex;
-  align-items: space-between;
-  margin-top: 50px;
-}
-
-
-.book-show-cover {
-  flex: 0 0 20%;
-}
-
-.book-show-description {
-  flex: 0 0 80%;
-  margin-top: -25px;
 }

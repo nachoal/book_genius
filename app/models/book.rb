@@ -54,7 +54,7 @@ class Book < ApplicationRecord
     if aylien_book_results.first.nil?
       "No sentiment analysis available"
     elsif aylien_book_results.first.aylien_twitter_json.nil?
-      "Not enough twitter comments found"
+      "Not enough comments on Twitter"
     else
       aylien_book_results.first.aylien_twitter_json["polarity"]
     end
@@ -66,9 +66,9 @@ class Book < ApplicationRecord
     when "neutral"
       '😐'
     when "positive"
-      '😄'
+      '😃'
     when "negative"
-      '🤬'
+      '😠'
     else
       string
     end
@@ -79,7 +79,13 @@ class Book < ApplicationRecord
   end
 
   def amazon_sentiment
-    aylien_book_results.first.aylien_amazon_json["polarity"]
+    if aylien_book_results.first.nil?
+      "No sentiment analysis available"
+    elsif aylien_book_results.first.aylien_amazon_json.nil?
+      "Not enough reviews on Amazon"
+    else
+      aylien_book_results.first.aylien_amazon_json["polarity"]
+    end
   end
 
   def amazon_polarity_score
@@ -100,6 +106,14 @@ class Book < ApplicationRecord
     counter = Hash.new(0)
     self.tweets.each do |tweet|
       counter[tweet.aylient_result_json['polarity']] += 1 unless tweet.aylient_result_json.nil?
+    end
+    counter
+  end
+
+  def count_amazon_polarity
+    counter = Hash.new(0)
+    self.amazon_reviews.each do |review|
+      counter[review.aylien_result_json['polarity']] += 1 unless review.aylien_result_json.nil?
     end
     counter
   end

@@ -1,20 +1,99 @@
 <%= javascript_pack_tag 'charting' %>
 
 <div class="container">
+
   <div class="book-show">
-    <div class="book-show-cover">
-      <%= cl_image_tag(@book.book_image.url, width: 200, height: 296)%>
+
+    <div class="book-show-cover" style="background-image: url(<%= @book.book_image.file.nil? ? "https://via.placeholder.com/178x256" : cloudinary_url(@book.book_image) %>);">
     </div>
+
     <div class="book-show-description">
       <h3><%= @book.title %></h3>
-      <h4>By <%= @book.author %></h4>
+      <h4>by <%= @book.author %></h4>
       <p><%= @book.description %></p>
-      <h4>Social sentiment</h4>
-      <p style="font-size: 80px; text-align:left"><%=  @book.translate_to_emoji(@book.twitter_sentiment) %></p>
     </div>
+
+    <div class="twitter-sentiment">
+      <h4><i class="fab fa-twitter" style="color: #1da1f2"></i> crowd:</h4>
+      <p><%=  @book.translate_to_emoji(@book.twitter_sentiment) %></p>
+    </div>
+
+    <div class="amazon-sentiment">
+      <h4><i class="fab fa-amazon" style="color: #FF9B00"></i> crowd:</h4>
+      <p><%=  @book.translate_to_emoji(@book.amazon_sentiment) %></p>
+    </div>
+
   </div>
+
+
   <div class="book-analysis">
+
+    <div class="twitter-logo">
+      <i class="fab fa-twitter"></i>
+    </div>
+
+    <div class="twitter-positive sentiment-emojis" style="background-image: url(https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/155/smiling-face-with-open-mouth_1f603.png)">
+    </div>
+
+    <div class="twitter-positive-text sentiment-text">
+      <p><strong><%= @book.count_polarity["positive"] ? @book.count_polarity["positive"] : 0 %></strong> positive comments</p>
+    </div>
+
+    <div class="twitter-neutral sentiment-emojis" style="background-image: url(https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/155/neutral-face_1f610.png)">
+    </div>
+
+    <div class="twitter-neutral-text sentiment-text">
+      <p><strong><%= @book.count_polarity["neutral"] ? @book.count_polarity["neutral"] : 0 %></strong> neutral comments</p>
+    </div>
+
+    <div class="twitter-negative sentiment-emojis" style="background-image: url(https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/apple/155/angry-face_1f620.png)">
+    </div>
+
+    <div class="twitter-negative-text sentiment-text">
+        <p><strong><%= @book.count_polarity["negative"] ? @book.count_polarity["negative"] : 0 %></strong> negative comments</p>
+    </div>
+
+    <div class="twitter-chart chart-design">
+      <h4># of tweets over time</h4>
       <%= line_chart @book.tweets.group_by_day(:creation_date).count %>
+    </div>
+
+    <div class="separation-line"></div>
+
+    <div class="amazon-logo">
+      <i class="fab fa-amazon"></i>
+    </div>
+
+    <div class="amazon-positive sentiment-emojis" style="background-image: url(https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/155/smiling-face-with-open-mouth_1f603.png)">
+    </div>
+
+    <div class="amazon-positive-text sentiment-text">
+      <p><strong><%= @book.count_amazon_polarity["positive"] ? @book.count_amazon_polarity["positive"] : 0 %></strong> positive comments</p>
+    </div>
+
+    <div class="amazon-neutral sentiment-emojis" style="background-image: url(https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/155/neutral-face_1f610.png)">
+    </div>
+
+    <div class="amazon-neutral-text sentiment-text">
+      <p><strong><%= @book.count_amazon_polarity["neutral"] ? @book.count_amazon_polarity["neutral"] : 0 %></strong> neutral comments</p>
+    </div>
+
+    <div class="amazon-negative sentiment-emojis" style="background-image: url(https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/apple/155/angry-face_1f620.png)">
+    </div>
+
+    <div class="amazon-negative-text sentiment-text">
+        <p><strong><%= @book.count_amazon_polarity["negative"] ? @book.count_amazon_polarity["negative"] : 0 %></strong> negative comments</p>
+    </div>
+
+    <div class="amazon-chart chart-design">
+      <h4># of reviews over time</h4>
+      <%= line_chart @book.amazon_reviews.group_by_day(:creation_date).count %>
+    </div>
+
+  </div>
+
+  <div class="book-comments-reviews">
+
     <h4><strong>What people are saying on twitter:</strong></h4>
     <div class="book-twitter">
       <ol>
@@ -31,5 +110,7 @@
         <% end %>
       </ol>
     </div>
+
   </div>
+
 </div>
