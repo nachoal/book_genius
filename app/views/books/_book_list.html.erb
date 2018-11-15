@@ -15,7 +15,7 @@
 </div>
 <% @books.each do |book| %>
   <div class="book-card">
-    <div class="book-cover"> 
+    <div class="book-cover">
       <div class="image-cover">
         <%= link_to(cl_image_tag(book.book_image.url(:thumbnail), width: 178, height: 256), book)%>
       </div>
@@ -23,7 +23,7 @@
     <div class="book-body">
       <h4 style="font-weight: 900;"><%= link_to(book.title.capitalize, book)%></h4>
       <h5 style="font-style:italic; font-weight: 700;">By <%= book.author %></h5>
-      <p><%= book.description%></p>
+      <p><%= book.description[0..250].gsub(/\s\w+\s*$/,'...') %></p>
       <h5 style="font-weight: 900;">Sentiments:</h5>
       <p><span style="font-size: 18px;"><span style="font-size: 25px; color: #55acee"><i class="fab fa-twitter-square"></i>:</span>  😍 :<%= book.count_polarity['positive'] %> 😐 :<%= book.count_polarity['neutral'] %> 😡 :<%= book.count_polarity['negative'] %></span></p>
       <p><span style="font-size: 18px;"><span style="font-size: 25px; color: #ff9900"><i class="fab fa-amazon"></i>:</span>  😍 :<%= book.count_polarity_amazon['positive'] %> 😐 :<%= book.count_polarity_amazon['neutral'] %> 😡 :<%= book.count_polarity_amazon['negative'] %></span></p>
@@ -35,7 +35,7 @@
           },
           scales: {
         xAxes: [{
-          display: false, 
+          display: false,
           gridLines: {
             display: false,
           }

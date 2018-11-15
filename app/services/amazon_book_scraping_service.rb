@@ -1,12 +1,21 @@
 class AmazonBookScrapingService
-  class AmazonIsBeingAPieceOfShit < StandardError; end
+  class AmazonError < StandardError; end
   include HTTParty
 
   def get_book_data_asin(book_and_author)
-    url = "https://www.amazon.com/s/ref=nb_sb_noss?url=search-alias%3Dstripbooks-intl-ship&field-keywords=#{book_and_author}"
+    url = "https://www.amazon.com/s/ref=nb_sb_noss"
+    # url = "https://www.amazon.com/s/ref=nb_sb_noss?url=search-alias%3Dstripbooks-intl-ship&field-keywords=#{book_and_author.html_safe}"
     # html_file = HTTParty.get(URI.decode(url)
     puts "Getting book ASIN number"
-    process_url(url).xpath('//li[@id="result_0"][@data-asin]')[0].attributes['data-asin'].value
+
+    options = {
+      query: {
+        url: "search-alias%3Dstripbooks-intl-ship",
+        field_keywords: book_and_author.html_safe,
+      },
+    }
+
+    process_url(url, options).xpath('//li[@id="result_0"][@data-asin]')[0].attributes['data-asin'].value
   end
 
   def get_book_reviews(data_asin)
@@ -24,13 +33,19 @@ class AmazonBookScrapingService
     page = 1
     review_list = []
     loop do
-      puts "Getting reviews of book (ASIN: #{data_asin}) on page #{page} of Amazon"
       url_str = url(data_asin, page)
+      puts "Getting reviews of book (ASIN: #{data_asin}) on page #{page} of Amazon"
       reviews = process_url(url_str).xpath('//span[@data-hook="review-body"]')
+      puts "Getting dates of reviews of book (ASIN: #{data_asin}) on page #{page} of Amazon"
+      creation_dates = process_url(url_str).xpath('//span[@data-hook="review-date"]')
       i = 1
-      reviews.take(5).each do |review|
-        puts "Book (ASIN: #{data_asin}): Fetching review #{i} of page #{page}"
-        review_list << review.children.text
+      reviews.each do |r|
+        puts "Book (ASIN: #{data_asin}): Fetching review and date #{i} of page #{page}"
+        review = {
+          text: r.children.text,
+          date: creation_date[i - 1].children.text
+        }
+        review_list << review
         puts "Waiting 0.5 sec before fetching next review"
         sleep(0.5)
         i += 1
@@ -49,9 +64,11 @@ class AmazonBookScrapingService
       input = "#{book.title} #{book.author} #{book.publisher}"
       data_asin = get_book_data_asin(input)
       get_all_book_reviews(data_asin, max_page).each do |review|
-        if review
+        if review[:text]
+          date = review[:date] ? review[:date].to_datetime : nil
           new_review = AmazonReview.new(
-            review: review,
+            review: review[:text],
+            creation_date: date,
             book: book
           )
           new_review.save
@@ -70,14 +87,14 @@ class AmazonBookScrapingService
     [a, b].sample
   end
 
-  def process_url(url)
+  def process_url(url, options = {})
     i = 1
-    html_file = HTTParty.get(url)
-    raise AmazonIsBeingAPieceOfShit, "Code not 200. Actual: #{html_file.code}" unless html_file.code == 200
+    html_file = HTTParty.get(url, options)
+    raise AmazonError, "Code not 200. Actual: #{html_file.code}" unless html_file.code == 200
 
     puts 'Amazon let us through! Processing url wiht Nokogiri'
     Nokogiri::HTML(html_file)
-  rescue AmazonIsBeingAPieceOfShit => error
+  rescue AmazonError => error
     puts "Amazon didn't let us through..."
     puts error
     puts 'Retrying in 5 seconds'

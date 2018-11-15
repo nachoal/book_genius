@@ -54,7 +54,7 @@ class Book < ApplicationRecord
     if aylien_book_results.first.nil?
       "No sentiment analysis available"
     elsif aylien_book_results.first.aylien_twitter_json.nil?
-      "Not enough twitter comments found"
+      "Not enough comments on Twitter"
     else
       aylien_book_results.first.aylien_twitter_json["polarity"]
     end
@@ -66,9 +66,9 @@ class Book < ApplicationRecord
     when "neutral"
       '😐'
     when "positive"
-      '😄'
+      '😃'
     when "negative"
-      '🤬'
+      '😠'
     else
       string
     end
@@ -79,7 +79,13 @@ class Book < ApplicationRecord
   end
 
   def amazon_sentiment
-    aylien_book_results.first.aylien_amazon_json["polarity"]
+    if aylien_book_results.first.nil?
+      "No sentiment analysis available"
+    elsif aylien_book_results.first.aylien_amazon_json.nil?
+      "Not enough reviews on Amazon"
+    else
+      aylien_book_results.first.aylien_amazon_json["polarity"]
+    end
   end
 
   def amazon_polarity_score

@@ -2,8 +2,8 @@
   display: flex;
   align-items: space-between;
   align-content: center;
-  margin-bottom: 20px; 
-  
+  margin-bottom: 20px;
+
   .book-body {
     margin-left: 20px;
   }
@@ -38,7 +38,7 @@
 
 .book-cover {
   flex: 0 0 20%;
-  
+
   .image-cover{
     background: #fff9f9;
     border: 1px solid #bab6b6;
@@ -62,23 +62,4 @@
 
 .book-mentions {
   flex: 0 0 30%
-}
-
-
-// Book show page CSS
-
-.book-show {
-  display: flex;
-  align-items: space-between;
-  margin-top: 50px;
-}
-
-
-.book-show-cover {
-  flex: 0 0 20%;
-}
-
-.book-show-description {
-  flex: 0 0 80%;
-  margin-top: -25px;
 }

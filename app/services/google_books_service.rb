@@ -9,7 +9,7 @@ class GoogleBooksService
         printType: 'books',
         langRestrict: 'en',
         orderBy: 'newest',
-        key: api_key
+        key: api_key,
       }
     )
     doc['items'].each do |item|
@@ -21,7 +21,7 @@ class GoogleBooksService
         publisher: volumeInfo['publisher'],
         description: volumeInfo['description'],
         category: volumeInfo['categories']&.first,
-        book_image: image_url
+        book_image: image_url,
       }
       book_list << book
     end
