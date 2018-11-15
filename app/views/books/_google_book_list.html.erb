@@ -2,13 +2,19 @@
   <div class="book-card">
     <div class="book-cover"><img src='<%= image_url book[:image_url]%>'height="256" width="178" ></div>
     <div class="book-body">
-      <h4><strong><%= book[:book].title %></strong></h4>
-      <h5>By <%= book[:book].author %>  </h5>
-      <p><%= book[:book].description[0..250].gsub(/\s\w+\s*$/,'...') %></p>
+      <h2><%= book[:book].title %></h2>
+      <h3>by <%= book[:book].author %>  </h3>
+      <p><%= book[:book].description[0..150].gsub(/\s\w+\s*$/,'...') %></p>
+      <h4>Sentiments:</h4>
+      <div class="sentiments-box">
+        <div class="network-sentiment">
+          <p>No sentiments analysis available yet</p>
+        </div>
+      </div>
     </div>
-    <div class="book-analysis">
-      <h4 style="text-align:center"><strong>Social sentiment</strong></h4>
-      <h5 style="text-align:center">No sentiment analysis yet</h5>
+    <div class="book-mentions">
+      <h2>Mentions/reviews over time:</h2>
+      <h5>No comments or reviews gathered yet</h5>
     </div>
   </div>
 <% end %>
