@@ -64,13 +64,13 @@ class Book < ApplicationRecord
   def translate_to_emoji(string)
     case string
     when "neutral"
-      '😐'
+      '<p class="emoji">😐</p>'
     when "positive"
-      '😃'
+      '<p class="emoji">😃</p>'
     when "negative"
-      '😠'
+      '<p class="emoji">😠</p>'
     else
-      string
+      "<p>#{string}</p>"
     end
   end
 

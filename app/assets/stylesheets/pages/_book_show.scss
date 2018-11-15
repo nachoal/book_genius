@@ -38,17 +38,18 @@
   grid-column: 2 / span 1;
   margin-right: 15px;
 
-  h3 {
-    margin: 0px;
-    font-size: 24px;
+  h2 {
+    margin: 0;
+    font-weight: bold;
+    font-size: 1.5em;
+    color: $red;
   }
 
-  h4 {
+  h3 {
     margin-top: 5px;
-    margin-bottom: 15px;
     font-style: italic;
-    font-size: 20px;
     font-weight: lighter;
+    font-size: 1em;
   }
 }
 
@@ -61,8 +62,17 @@
   }
 
   p {
-    font-size: 80px;
+    font-size: 0.8em;
+    border: 1px solid $red;
+    border-radius: 5px;
+    padding: 15px 10px;
+    margin: 5px;
   }
+  p.emoji {
+    font-size: 80px !important;
+    border: none;
+  }
+
 }
 
 .amazon-sentiment{
@@ -74,9 +84,19 @@
   }
 
   p {
-    font-size: 80px;
+    font-size: 0.8em;
+    border: 1px solid $red;
+    border-radius: 5px;
+    padding: 15px 10px;
+    margin: 5px;
+  }
+
+  p.emoji {
+    font-size: 80px !important;
+    border: none;
   }
 }
+
 
 // Grid structure for detailed book analysis
 .book-analysis {
