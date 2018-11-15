@@ -33,20 +33,21 @@
 .navbar-wagon-item {
   cursor: pointer;
   padding: 0 20px;
-  border-radius: 15px;
-  border: 1px solid $red;
-  background: white;
+  border-radius: 5px;
+  border: 2px solid white;
+  background: transparent;
   padding: 8px 10px 8px 10px;
   margin: 0px 10px 0px 10px;
 }
 
 /* Navbar link */
 .navbar-wagon-link {
-  color: #000;
+  color: white;
   font-size: 14px;
 }
 .navbar-wagon-link:hover {
   color: $red;
+  background: white;
   text-decoration: none;
 }
 

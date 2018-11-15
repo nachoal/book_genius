@@ -12,7 +12,7 @@
     <% animation_duration = "animation-duration-#{rand(0..2)}" %>
     <% animation_start = "animation-start-#{rand(0..2)}" %>
     <div class="item <%= animation_duration %> <%= animation_start %>" style='background-image: url(<%= cl_image_path(
-    tile_image) %>);'></div>
+    tile_image).gsub(/http/, 'https').gsub(/httpss/,'https') %>);'></div>
   <% end %>
 </div>
 

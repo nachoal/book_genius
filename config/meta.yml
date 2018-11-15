@@ -1,0 +1,6 @@
+meta_product_name: "Book Genius "
+meta_title: "Book Genius - Visualizing emotions around a book"
+meta_description: "Scrapped list of books filtered by twitter mentions or sentiments "
+meta_image: "cover.png"                       # should exist in `app/assets/images/`
+twitter_account: "@ignacioaal"   # required for Twitter Cards
+
