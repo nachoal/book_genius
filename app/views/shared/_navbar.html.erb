@@ -1,18 +1,12 @@
-<div class="navbar-wagon <%= action_name == 'about' ? 'navbar-fixed-top' : '' %>">
+<div class="navbar-wagon <%= action_name == 'home' ? 'navbar-fixed-top' : '' %>">
   <!-- Logo -->
   <%= link_to root_path, class: "navbar-wagon-brand" do %>
-    <%= image_tag("https://i.postimg.cc/cJQMmXPT/Bildschirmfoto-2018-11-12-um-16-11-58.png", height: 80) %>
+    <%= image_tag("https://i.postimg.cc/zf2681T2/bookgenius2.png", height: 80) %>
   <% end %>
 
   <!-- Right Navigation -->
-  <div class="search">
-    <span id="book_search" class="fa fa-search"></span>
-    <%= form_tag(search_books_path, {class: 'form-inline', method: 'get'}) do %>
-      <%= text_field_tag :search, "", class: "form-control" %>
-      <%= submit_tag 'Search', class: "btn"%>
-    <% end %>&nbsp;
-    <!-- <input placeholder="Books, books, books"> -->
-  </div>
+
+  <%= render "shared/search-bar" %>
 
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
@@ -44,7 +38,7 @@
     <% else %>
       <!-- Login link (when logged out) -->
 
-      <%= link_to t(".sign_up", default: "Browse collections"), all_collections_path, class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to t(".sign_up", default: "Collections"), all_collections_path, class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to t(".sign_up", default: "Signup"), new_user_registration_path, class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
     <% end %>
@@ -55,7 +49,7 @@
     <div class="dropdown">
       <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
       <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-        <li><%= link_to t(".all_collections", default: "Browse collections"), all_collections_path, class: "navbar-wagon-item navbar-wagon-link" %></li>
+        <li><%= link_to t(".all_collections", default: "Collections"), all_collections_path, class: "navbar-wagon-item navbar-wagon-link" %></li>
         <li><%= link_to t(".sign_up", default: "Signup"), new_user_registration_path, class: "navbar-wagon-item navbar-wagon-link" %></li>
         <li><%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %></li>
       </ul>

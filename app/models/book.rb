@@ -110,7 +110,7 @@ class Book < ApplicationRecord
     counter
   end
 
-  def count_amazon_polarity
+  def count_polarity_amazon
     counter = Hash.new(0)
     self.amazon_reviews.each do |review|
       counter[review.aylien_result_json['polarity']] += 1 unless review.aylien_result_json.nil?
