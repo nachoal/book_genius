@@ -81,21 +81,21 @@
     </div>
 
     <div class="positive-text sentiment-text">
-      <p><strong><%= @book.count_amazon_polarity["positive"] ? @book.count_amazon_polarity["positive"] : 0 %></strong> positive comments</p>
+      <p><strong><%= @book.count_polarity_amazon["positive"] ? @book.count_polarity_amazon["positive"] : 0 %></strong> positive comments</p>
     </div>
 
     <div class="neutral-sentiment sentiment-emojis" style="background-image: url(https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/155/neutral-face_1f610.png)">
     </div>
 
     <div class="neutral-text sentiment-text">
-      <p><strong><%= @book.count_amazon_polarity["neutral"] ? @book.count_amazon_polarity["neutral"] : 0 %></strong> neutral comments</p>
+      <p><strong><%= @book.count_polarity_amazon["neutral"] ? @book.count_polarity_amazon["neutral"] : 0 %></strong> neutral comments</p>
     </div>
 
     <div class="negative-sentiment sentiment-emojis" style="background-image: url(https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/apple/155/angry-face_1f620.png)">
     </div>
 
     <div class="negative-text sentiment-text">
-        <p><strong><%= @book.count_amazon_polarity["negative"] ? @book.count_amazon_polarity["negative"] : 0 %></strong> negative comments</p>
+        <p><strong><%= @book.count_polarity_amazon["negative"] ? @book.count_polarity_amazon["negative"] : 0 %></strong> negative comments</p>
     </div>
 
     <div class="chart chart-design">
