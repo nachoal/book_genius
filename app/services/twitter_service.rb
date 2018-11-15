@@ -24,7 +24,7 @@ class TwitterService
     books ||= Book.all
     books = [books] if books.is_a?(Book)
     books.each do |book|
-      client.search("#{book.title} book -rt", lang: 'en').take(5).each do |tweety|
+      client.search("#{book.title} book -rt", lang: 'en').each do |tweety|
         p "creating tweets for book #{book.id}"
           book.tweets.create(
           tweet: tweety.text,

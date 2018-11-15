@@ -23,6 +23,9 @@ class Book < ApplicationRecord
   scope :no_tweets, -> { left_joins(:tweets).where("tweets.book_id IS NULL") }
   instance_eval { alias without_tweets no_tweets }
 
+  scope :no_reviews, -> { left_joins(:amazon_reviews).where("amazon_reviews.book_id IS NULL") }
+  instance_eval { alias without_reviews no_reviews }
+
   scope :no_aylien_results, -> { left_joins(:aylien_book_results).where("aylien_book_results.book_id IS NULL") }
 
   scope :no_twitter_aylien, -> { left_joins(:aylien_book_results).where("aylien_book_results.aylien_twitter_json IS NULL")}
