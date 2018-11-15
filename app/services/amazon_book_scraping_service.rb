@@ -3,18 +3,18 @@ class AmazonBookScrapingService
   include HTTParty
 
   def get_book_data_asin(book_and_author)
-    # url = "https://www.amazon.com/s/ref=nb_sb_noss"
-    url = "https://www.amazon.com/s/ref=nb_sb_noss?url=search-alias%3Dstripbooks-intl-ship&field-keywords=#{book_and_author.html_safe}"
+    url = "https://www.amazon.com/s/ref=nb_sb_noss"
+    # url = "https://www.amazon.com/s/ref=nb_sb_noss?url=search-alias%3Dstripbooks-intl-ship&field-keywords=#{book_and_author.html_safe}"
     # html_file = HTTParty.get(URI.decode(url)
-    # options = {
-    #   query: {
-    #     url: "search-alias%3Dstripbooks-intl-ship",
-    #     field_keywords: book_and_author.html_safe,
-    #   },
-    # }
+    options = {
+      query: {
+        url: "search-alias%3Dstripbooks-intl-ship",
+        keywords: book_and_author.html_safe,
+      },
+    }
 
     puts "Getting book ASIN number"
-    process_url(url).xpath('//li[@id="result_0"][@data-asin]')[0].attributes['data-asin'].value
+    process_url(url, options).xpath('//li[@id="result_0"][@data-asin]')[0].attributes['data-asin'].value
   end
 
   def get_book_reviews(data_asin)
@@ -59,7 +59,7 @@ class AmazonBookScrapingService
   end
 
   def seed_db(max_page)
-    Book.all.take(8).each do |book|
+    Book.no_reviews.each do |book|
       input = "#{book.title} #{book.author} #{book.publisher}"
       data_asin = get_book_data_asin(input)
       get_all_book_reviews(data_asin, max_page).each do |review|

@@ -16,6 +16,7 @@ class AylienService
   def self.aggregated_tweets_reviews_sentiment
     books = Book.all
     books.each do |book|
+      book.aylien_book_results.each { |result| result.destroy }
       p appended_tweets = book.tweets.map { |twit| twit.tweet }.join(' ')
       p appended_reviews = book.amazon_reviews.map { |review| review.review  }.join(' ')
         aylien_results = AylienBookResult.new(
