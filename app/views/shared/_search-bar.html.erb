@@ -1,8 +1,6 @@
   <div class="search">
-    <span id="book_search" class="fa fa-search"></span>
     <%= form_tag(search_books_path, {class: 'form-inline', method: 'get'}) do %>
-      <%= text_field_tag :search, "", class: "form-control" %>
+      <%= text_field_tag :search, "", class: "form-control", placeholder: '🔍 Find the book you want' %>
       <%= submit_tag 'Search', class: "btn"%>
     <% end %>&nbsp;
-    <!-- <input placeholder="Books, books, books"> -->
   </div>

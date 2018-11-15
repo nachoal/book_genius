@@ -12,8 +12,13 @@
 
 .book-card {
   display: flex;
-  align-items: space-between;
+  align-items: center;
   margin-bottom: 20px;
+  border: 1px solid #ece9e9;
+  border-radius: 5px;
+  padding: 20px;
+  margin-bottom: 50px;
+  box-shadow: 0 15px 35px rgba(50, 50, 93, 0.1), 0 5px 15px rgba(0, 0, 0, 0.07);
 }
 
 .book-cover img {
@@ -36,7 +41,7 @@
   
   .image-cover{
     background: #fff9f9;
-    border: 1px solid black;
+    border: 1px solid #bab6b6;
     border-radius: 5px;
     width: 178px !important;
   }
@@ -47,7 +52,7 @@
 }
 
 .book-body {
-  flex: 0 0 40%;
+  flex: 0 0 50%;
   padding-right: 2em;
 }
 
@@ -56,7 +61,7 @@
 }
 
 .book-mentions {
-  flex: 0 0 20%
+  flex: 0 0 30%
 }
 
 

@@ -24,6 +24,8 @@
 }
 
 .search {
+  margin-left: 20px;
+  margin-top: 15px;
   position: relative;
   color: #000;
   font-size: 16px;
@@ -50,7 +52,8 @@
 }
 
 .btn {
-  border-radius: 0px 10px 10px 0px;
+  border-radius: 5px;
+  height: 50px;
   background-color: $red;
   border-color: $red;
   &:hover {
@@ -64,3 +67,13 @@
   border-bottom: 1px solid $red;
   border-top: 1px solid $red;
 }
+
+#search {
+  width: 600px;
+  height: 50px;
+  border: 1px solid #cacaca;
+  border-radius: 5px;
+}
+
+
+
