@@ -1,6 +1,11 @@
   <div class="search">
-    <%= form_tag(search_books_path, {class: 'form-inline', method: 'get'}) do %>
-      <%= text_field_tag :search, "", class: "form-control", placeholder: '🔍 Find the book you want' %>
-      <%= submit_tag 'Search', class: "btn"%>
-    <% end %>&nbsp;
+    <%= form_tag(search_books_path, {class: 'form-inline landing-search text-center', method: 'get'}) do %>
+      <div class="form-group text-center">
+      <label for="form" class="sr-only">
+        Book
+      </label>
+        <%= text_field_tag :search, "", class: "form-control", placeholder: 'Search for a book any book you want' %>
+      </div>
+        <%= submit_tag("🔍" , class: "btn btn-default")%>
+        <% end %>&nbsp;
   </div>
