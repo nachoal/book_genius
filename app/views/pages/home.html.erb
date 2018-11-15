@@ -1,2 +1,19 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="banner">
+  <div class="landing-search-bar">
+    <div class="landing-header">
+
+      <%= image_tag("https://i.postimg.cc/zf2681T2/bookgenius2.png", height: 50) %>
+      <h1>For every mood there is a book</h1>
+      <br>
+      <%= render "shared/search-bar" %>
+    </div>
+  </div>
+  <% @tile_images.each do |tile_image| %>
+    <% animation_duration = "animation-duration-#{rand(0..2)}" %>
+    <% animation_start = "animation-start-#{rand(0..2)}" %>
+    <div class="item <%= animation_duration %> <%= animation_start %>" style='background-image: url(<%= cl_image_path(
+    tile_image) %>);'></div>
+  <% end %>
+</div>
+
+
