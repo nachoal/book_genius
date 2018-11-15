@@ -9,17 +9,17 @@
     <div class="book-show-cover" style="background-image: url(<%= @book.book_image.file.nil? ? "https://via.placeholder.com/178x256" : cloudinary_url(@book.book_image) %>);">
     </div>
     <div class="book-show-description">
-      <h3><%= @book.title %></h3>
-      <h4>by <%= @book.author %></h4>
+      <h2><%= @book.title %></h2>
+      <h3>by <%= @book.author %></h3>
       <p><%= @book.description %></p>
     </div>
     <div class="twitter-sentiment">
       <h4>on <i class="fab fa-twitter" style="color: #1da1f2"></i></h4>
-      <p><%=  @book.translate_to_emoji(@book.twitter_sentiment) %></p>
+      <%=  @book.translate_to_emoji(@book.twitter_sentiment).html_safe %>
     </div>
     <div class="amazon-sentiment">
       <h4>on <i class="fab fa-amazon" style="color: #FF9B00"></i></h4>
-      <p><%=  @book.translate_to_emoji(@book.amazon_sentiment) %></p>
+      <%=  @book.translate_to_emoji(@book.amazon_sentiment).html_safe %>
     </div>
   </div>
 
