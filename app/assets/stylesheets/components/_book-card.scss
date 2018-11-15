@@ -1,19 +1,6 @@
-.titles {
-  display: flex;
-  align-items: space-between;
-  align-content: center;
-  margin-bottom: 20px;
-
-  .book-body {
-    margin-left: 20px;
-  }
-}
-
-
 .book-card {
   display: flex;
-  align-items: center;
-  margin-bottom: 20px;
+  align-items: flex-start;
   border: 1px solid #ece9e9;
   border-radius: 5px;
   padding: 20px;
@@ -32,12 +19,9 @@
   box-shadow: 1px 1px 5px 5px rgba(0, 0, 0, 0.2);
 }
 
-.book-card .book-body {
-  margin-left: 20px;
-}
-
 .book-cover {
-  flex: 0 0 20%;
+  flex: 0 0 auto;
+  margin-right: 20px;
 
   .image-cover{
     background: #fff9f9;
@@ -53,7 +37,28 @@
 
 .book-body {
   flex: 0 0 50%;
+  margin-left: 20px;
   padding-right: 2em;
+
+  h2 {
+    margin: 0;
+    font-weight: bold;
+    font-size: 1.5em;
+    color: $red;
+  }
+
+  h3 {
+    margin-top: 5px;
+    font-style: italic;
+    font-weight: lighter;
+    font-size: 1em;
+  }
+
+  h4 {
+    margin-top: 25px;
+    font-weight: bold;
+    font-size: 1em;
+  }
 }
 
 .book-twitter {
@@ -61,5 +66,37 @@
 }
 
 .book-mentions {
-  flex: 0 0 30%
+  flex: 0 0 30%;
+  margin-right: 20px;
+  h2 {
+    margin-top: 0;
+    font-size: 1.1em;
+    font-weight: 900;
+  }
+
+  h5 {
+    border: 1px solid $red;
+    padding: 20px 35px;
+    margin: 25px;
+    border-radius: 5px;
+  }
+}
+
+.sentiments-box {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.sentiment-separator {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.icon-separator {
+  margin-right: 15px;
+}
+
+.network-sentiment {
+  flex: 0 0 auto;
 }

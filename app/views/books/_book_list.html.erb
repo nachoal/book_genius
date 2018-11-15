@@ -1,31 +1,30 @@
 <%= javascript_pack_tag 'charting' %>
 
-<div class="titles">
-  <div class="book-cover">
-  </div>
-  <div class="book-body">
-    <h3>Description</h3>
-  </div>
-  <div class="book-mentions" >
-    <h3>Mentions</h3>
-  </div>
-</div>
 <% @books.each do |book| %>
   <div class="book-card">
     <div class="book-cover">
-      <div class="image-cover">
         <%= link_to(cl_image_tag(book.book_image.url(:thumbnail), width: 178, height: 256), book)%>
+    </div>
+
+    <div class="book-body">
+      <h2><%= link_to(book.title.capitalize, book)%></h2>
+      <h3>by <%= book.author %></h3>
+      <p><%= book.description[0..150].gsub(/\s\w+\s*$/,'...') %></p>
+
+      <h4>Sentiments:</h4>
+      <div class="sentiments-box">
+        <div class="network-sentiment">
+          <p><span style="font-size: 18px;"><span style="font-size: 25px; color: #55acee"><i class="fab fa-twitter-square"></i></span><span class="icon-separator"></span>  😍 :<%= book.count_polarity['positive'] %>&nbsp;&nbsp; 😐 :<%= book.count_polarity['neutral'] %>&nbsp;&nbsp; 😡 :<%= book.count_polarity['negative'] %></span><span class="sentiment-separator">|</span></p>
+        </div>
+        <div class="network-sentiment">
+          <p><span style="font-size: 18px;"><span style="font-size: 25px; color: #ff9900"><i class="fab fa-amazon"></i></span><span class="icon-separator"></span>  😍 :<%= book.count_polarity_amazon['positive'] %>&nbsp;&nbsp; 😐 :<%= book.count_polarity_amazon['neutral'] %>&nbsp;&nbsp; 😡 :<%= book.count_polarity_amazon['negative'] %></span></p>
+        </div>
       </div>
     </div>
-    <div class="book-body">
-      <h4 style="font-weight: 900;"><%= link_to(book.title.capitalize, book)%></h4>
-      <h5 style="font-style:italic; font-weight: 700;">By <%= book.author %></h5>
-      <p><%= book.description[0..250].gsub(/\s\w+\s*$/,'...') %></p>
-      <h5 style="font-weight: 900;">Sentiments:</h5>
-      <p><span style="font-size: 18px;"><span style="font-size: 25px; color: #55acee"><i class="fab fa-twitter-square"></i>:</span>  😍 :<%= book.count_polarity['positive'] %> 😐 :<%= book.count_polarity['neutral'] %> 😡 :<%= book.count_polarity['negative'] %></span></p>
-      <p><span style="font-size: 18px;"><span style="font-size: 25px; color: #ff9900"><i class="fab fa-amazon"></i>:</span>  😍 :<%= book.count_polarity_amazon['positive'] %> 😐 :<%= book.count_polarity_amazon['neutral'] %> 😡 :<%= book.count_polarity_amazon['negative'] %></span></p>
-    </div>
+
     <div class="book-mentions" >
+      <h2>Mentions/reviews over time:</h2>
+      <p style="font-size: 10px; color: hsl(0, 0%, 45%);">From <%= book.tweets.group_by_day(:creation_date).count.keys.first %> to <%= book.tweets.group_by_day(:creation_date).count.keys.last %>.</p>
       <%= line_chart(book.tweets.group_by_day(:creation_date).count, width: "200px", height: "200px",colors: ["#b73535"], library: {
           layout: {
                     padding: {left: 10, right: 5, top: 5, bottom: 2}
@@ -44,7 +43,6 @@
           }
         }]
       }})%>
-      <p style="font-size: 10px; color: hsl(0, 0%, 45%);">From <%= book.tweets.group_by_day(:creation_date).count.keys.first %> to <%= book.tweets.group_by_day(:creation_date).count.keys.last %>.</p>
     </div>
   </div>
 <% end %>
