@@ -1,3 +1,13 @@
+.background {
+  background-size: cover;
+  position: fixed;
+  top: 0;
+  opacity: 0.3;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
 .book-show {
   display: grid;
   grid-template-columns: 1fr 3fr 1fr 1fr;
@@ -7,6 +17,8 @@
   padding: 15px 5px;
   border: 1px solid grey;
   border-radius: 10px;
+  background-color: white;
+  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.2);
 }
 
 .book-show-cover {
@@ -44,7 +56,7 @@
   text-align: center;
 
   h4 {
-    font-size: 20px;
+    font-size: 24px;
   }
 
   p {
@@ -57,7 +69,7 @@
   text-align: center;
 
   h4 {
-    font-size: 20px;
+    font-size: 24px;
   }
 
   p {
@@ -65,115 +77,79 @@
   }
 }
 
+// Grid structure for detailed book analysis
 .book-analysis {
   display: grid;
   grid-template-columns: 1fr 80px 1fr 1fr 1fr;
-  grid-template-row: 1fr 1fr 1fr 1px 1fr 1fr 1fr;
+  grid-template-row: 1fr 1fr 1fr 1px 1fr 1fr 1fr 1fr;
   margin-top: 50px;
   margin-bottom: 50px;
   padding: 15px 5px;
   border: 1px solid grey;
   border-radius: 10px;
+  background-color: white;
+  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.2);
 }
 
-// Twitter Grid Details
-.twitter-logo {
+.twitter-background {
+  background-color: rgba(29,161,242, 0.1);
+}
+
+.amazon-background {
+  background-color: rgba(255, 155, 0, 0.1);
+}
+
+.white-background {
+  background-color: rgba(255, 155, 0, 0.1);
+}
+
+.logo {
   grid-column: 1 / span 1;
   grid-row: 1 / span 3;
   place-self: center;
   font-size: 100px;
-  color: #1da1f2;
+  .fa-twitter {
+    color: #1da1f2 !important;
+  }
+  .fa-amazon {
+    color: #FF9B00 !important;
+  }
 }
 
-.twitter-positive {
+.positive-sentiment {
   grid-column: 2 / span 1;
   grid-row: 1 / span 1;
 }
 
-.twitter-neutral {
+.neutral-sentiment {
   grid-column: 2 / span 1;
   grid-row: 2 / span 1;
 }
 
-.twitter-negative {
+.negative-sentiment {
   grid-column: 2 / span 1;
   grid-row: 3 / span 1;
 }
 
-.twitter-positive-text {
+.positive-text {
   grid-column: 3 / span 1;
   grid-row: 1 / span 1;
 }
 
-.twitter-neutral-text {
+.neutral-text {
   grid-column: 3 / span 1;
   grid-row: 2 / span 1;
 }
 
-.twitter-negative-text {
+.negative-text {
   grid-column: 3 / span 1;
   grid-row: 3 / span 1;
 }
 
-.twitter-chart {
+.chart {
   grid-column: 4 / span 2;
   grid-row: 1 / span 3;
 }
-
-// Grid separation line
-.separation-line {
-  grid-column: 1 / span 6;
-  grid-row: 4 / span 1;
-  border-top: 1px solid #dbdbdb;
-  margin-top: 50px;
-  margin-bottom: 50px;
-}
-
-// Amazon Grid Details
-.amazon-logo {
-  grid-column: 1 / span 1;
-  grid-row: 5 / span 3;
-  place-self: center;
-  font-size: 100px;
-  color: #FF9B00;
-}
-
-.amazon-positive {
-  grid-column: 2 / span 1;
-  grid-row: 5 / span 1;
-}
-
-.amazon-neutral {
-  grid-column: 2 / span 1;
-  grid-row: 6 / span 1;
-}
-
-.amazon-negative {
-  grid-column: 2 / span 1;
-  grid-row: 7 / span 1;
-}
-
-.amazon-positive-text {
-  grid-column: 3 / span 1;
-  grid-row: 5 / span 1;
-}
-
-.amazon-neutral-text {
-  grid-column: 3 / span 1;
-  grid-row: 6 / span 1;
-}
-
-.amazon-negative-text {
-  grid-column: 3 / span 1;
-  grid-row: 7 / span 1;
-}
-
-.amazon-chart {
-  grid-column: 4 / span 2;
-  grid-row: 5 / span 3;
-}
-
-
 
 // Grid design elements
 .sentiment-emojis {
@@ -204,6 +180,78 @@
     text-align: center;
     font-size: 16px;
   }
+}
+
+// Grid separation line
+.separation-line {
+  grid-column: 1 / span 6;
+  grid-row: 4 / span 1;
+  border-top: 1px solid #dbdbdb;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+// Grid part with comments and reviews
+.title {
+  grid-column: 1 / span 5;
+  grid-row: 5 / span 1;
+}
+
+.book-comments {
+  grid-column: 2 / span 3;
+  grid-row: 6 / span 3;
+}
+
+.book-reviews {
+  grid-column: 1 / span 5;
+  grid-row: 6 / span 3;
+}
+
+.padding-left {
+  padding-left: 50px;
+}
+
+.padding-right {
+  padding-right: 50px;
+}
+
+// Twitter Bubbled
+.speech-bubble {
+  position: relative;
+  background: #1da1f2;
+  border-radius: .4em;
+  margin: 15px;
+  padding: 10px;
+  color: black;
+}
+
+.speech-bubble:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 0;
+  height: 0;
+  border: 22px solid transparent;
+  border-right-color: #1da1f2;
+  border-left: 0;
+  border-bottom: 0;
+  margin-top: -11px;
+  margin-left: -22px;
+}
+
+// Amazon review squared
+.review-square {
+  border: 1px solid #FF9B00;
+  background: #FF9B00;
+  border-radius: .4em;
+  margin: 15px;
+  padding: 10px;
+  color: black;
+}
+
+.no-dot {
+  list-style-type: none;
 }
 
 
@@ -256,6 +304,177 @@
   .amazon-sentiment{
     grid-column: 3 /span 2;
     grid-row: 2 / span 1;
+  }
+
+  // Grid structure for detailed book analysis
+  .book-analysis {
+    display: grid;
+    grid-template-columns: 1fr 80px 1fr;
+    grid-template-row: 1fr 1fr 1fr 1fr 1fr 1px 1fr 1fr 1fr 1fr;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    padding: 15px 5px;
+    border: 1px solid grey;
+    border-radius: 10px;
+  }
+
+  .twitter-background {
+    background-color: rgba(29,161,242, 0.1);
+  }
+
+  .amazon-background {
+    background-color: rgba(255, 155, 0, 0.1);
+  }
+
+  .logo {
+    grid-column: 1 / span 1;
+    grid-row: 1 / span 3;
+    place-self: center;
+    font-size: 100px;
+    .twitter {
+      color: #1da1f2;
+    }
+    .amazon {
+      color: #FF9B00;
+    }
+  }
+
+  .positive-sentiment {
+    grid-column: 2 / span 1;
+    grid-row: 1 / span 1;
+  }
+
+  .neutral-sentiment {
+    grid-column: 2 / span 1;
+    grid-row: 2 / span 1;
+  }
+
+  .negative-sentiment {
+    grid-column: 2 / span 1;
+    grid-row: 3 / span 1;
+  }
+
+  .positive-text {
+    grid-column: 3 / span 1;
+    grid-row: 1 / span 1;
+  }
+
+  .neutral-text {
+    grid-column: 3 / span 1;
+    grid-row: 2 / span 1;
+  }
+
+  .negative-text {
+    grid-column: 3 / span 1;
+    grid-row: 3 / span 1;
+  }
+
+  .chart {
+    grid-column: 1 / span 3;
+    grid-row: 4 / span 2;
+  }
+
+  // Grid design elements
+  .sentiment-emojis {
+    align-self: center;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    max-width: 100px;
+    max-height: 100px;
+    min-width: 50px;
+    min-height: 50px;
+  }
+
+  .sentiment-text {
+    align-self: center;
+    padding-left: 20px;
+
+    p {
+      margin: 0px;
+    }
+  }
+
+  .chart-design {
+    padding: 10px 10px;
+    align-self: center;
+
+    h4 {
+      text-align: center;
+      font-size: 16px;
+    }
+  }
+
+  // Grid separation line
+  .separation-line {
+    grid-column: 1 / span 3;
+    grid-row: 6 / span 1;
+    border-top: 1px solid #dbdbdb;
+    margin-top: 25px;
+    margin-bottom: 25px;
+  }
+
+  // Grid part with comments and reviews
+  .title {
+    grid-column: 1 / span 3;
+    grid-row: 7 / span 1;
+  }
+
+  .book-comments {
+    grid-column: 1 / span 3;
+    grid-row: 8 / span 3;
+  }
+
+  .book-reviews {
+    grid-column: 1 / span 3;
+    grid-row: 8 / span 3;
+  }
+
+  .padding-left {
+    padding-left: 25px;
+  }
+
+  .padding-right {
+    padding-right: 25px;
+  }
+
+  // Twitter Bubbled
+  .speech-bubble {
+    position: relative;
+    background: #1da1f2;
+    border-radius: .4em;
+    margin: 15px;
+    padding: 10px;
+    color: black;
+  }
+
+  .speech-bubble:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 0;
+    height: 0;
+    border: 22px solid transparent;
+    border-right-color: #1da1f2;
+    border-left: 0;
+    border-bottom: 0;
+    margin-top: -11px;
+    margin-left: -22px;
+  }
+
+  // Amazon review squared
+  .review-square {
+    border: 1px solid #FF9B00;
+    // background: #1da1f2;
+    border-radius: .4em;
+    margin: 15px;
+    padding: 10px;
+    color: black;
+  }
+
+  .no-dot {
+    list-style-type: none;
   }
 }
 
@@ -327,5 +546,179 @@
     p {
       font-size: 60px;
     }
+  }
+
+  // Grid structure for detailed book analysis
+  .book-analysis {
+    display: grid;
+    grid-template-columns: 1fr 80px 1fr;
+    grid-template-row: 1fr 1fr 1fr 1fr 1fr 1px 1fr 1fr 1fr 1fr;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    padding: 15px 5px;
+    border: 1px solid grey;
+    border-radius: 10px;
+  }
+
+  .twitter-background {
+    background-color: rgba(29,161,242, 0.1);
+  }
+
+  .amazon-background {
+    background-color: rgba(255, 155, 0, 0.1);
+  }
+
+  .logo {
+    grid-column: 1 / span 1;
+    grid-row: 1 / span 3;
+    place-self: center;
+    font-size: 100px;
+    .twitter {
+      color: #1da1f2;
+    }
+    .amazon {
+      color: #FF9B00;
+    }
+  }
+
+  .positive-sentiment {
+    grid-column: 2 / span 1;
+    grid-row: 1 / span 1;
+  }
+
+  .neutral-sentiment {
+    grid-column: 2 / span 1;
+    grid-row: 2 / span 1;
+  }
+
+  .negative-sentiment {
+    grid-column: 2 / span 1;
+    grid-row: 3 / span 1;
+  }
+
+  .positive-text {
+    grid-column: 3 / span 1;
+    grid-row: 1 / span 1;
+    margin-bottom: 10px;
+  }
+
+  .neutral-text {
+    grid-column: 3 / span 1;
+    grid-row: 2 / span 1;
+    margin-bottom: 10px;
+  }
+
+  .negative-text {
+    grid-column: 3 / span 1;
+    grid-row: 3 / span 1;
+    margin-bottom: 10px;
+  }
+
+  .chart {
+    grid-column: 1 / span 3;
+    grid-row: 4 / span 2;
+  }
+
+  // Grid design elements
+  .sentiment-emojis {
+    align-self: center;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    max-width: 100px;
+    max-height: 100px;
+    min-width: 50px;
+    min-height: 50px;
+  }
+
+  .sentiment-text {
+    align-self: center;
+    padding-left: 20px;
+
+    p {
+      margin: 0px;
+    }
+  }
+
+  .chart-design {
+    padding: 10px 10px;
+    align-self: center;
+
+    h4 {
+      text-align: center;
+      font-size: 16px;
+    }
+  }
+
+  // Grid separation line
+  .separation-line {
+    grid-column: 1 / span 3;
+    grid-row: 6 / span 1;
+    border-top: 1px solid #dbdbdb;
+    margin-top: 25px;
+    margin-bottom: 25px;
+  }
+
+  // Grid part with comments and reviews
+  .title {
+    grid-column: 1 / span 3;
+    grid-row: 7 / span 1;
+  }
+
+  .book-comments {
+    grid-column: 1 / span 3;
+    grid-row: 8 / span 3;
+  }
+
+  .book-reviews {
+    grid-column: 1 / span 3;
+    grid-row: 8 / span 3;
+  }
+
+  .padding-left {
+    padding-left: 25px;
+  }
+
+  .padding-right {
+    padding-right: 25px;
+  }
+
+  // Twitter Bubbled
+  .speech-bubble {
+    position: relative;
+    background: #1da1f2;
+    border-radius: .4em;
+    margin: 15px;
+    padding: 10px;
+    color: black;
+  }
+
+  .speech-bubble:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 0;
+    height: 0;
+    border: 22px solid transparent;
+    border-right-color: #1da1f2;
+    border-left: 0;
+    border-bottom: 0;
+    margin-top: -11px;
+    margin-left: -22px;
+  }
+
+  // Amazon review squared
+  .review-square {
+    border: 1px solid #FF9B00;
+    // background: #1da1f2;
+    border-radius: .4em;
+    margin: 15px;
+    padding: 10px;
+    color: black;
+  }
+
+  .no-dot {
+    list-style-type: none;
   }
 }

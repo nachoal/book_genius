@@ -33,13 +33,19 @@ class AmazonBookScrapingService
     page = 1
     review_list = []
     loop do
-      puts "Getting reviews of book (ASIN: #{data_asin}) on page #{page} of Amazon"
       url_str = url(data_asin, page)
+      puts "Getting reviews of book (ASIN: #{data_asin}) on page #{page} of Amazon"
       reviews = process_url(url_str).xpath('//span[@data-hook="review-body"]')
+      puts "Getting dates of reviews of book (ASIN: #{data_asin}) on page #{page} of Amazon"
+      creation_dates = process_url(url_str).xpath('//span[@data-hook="review-date"]')
       i = 1
-      reviews.each do |review|
-        puts "Book (ASIN: #{data_asin}): Fetching review #{i} of page #{page}"
-        review_list << review.children.text
+      reviews.each do |r|
+        puts "Book (ASIN: #{data_asin}): Fetching review and date #{i} of page #{page}"
+        review = {
+          text: r.children.text,
+          date: creation_date[i - 1].children.text
+        }
+        review_list << review
         puts "Waiting 0.5 sec before fetching next review"
         sleep(0.5)
         i += 1
@@ -58,9 +64,11 @@ class AmazonBookScrapingService
       input = "#{book.title} #{book.author} #{book.publisher}"
       data_asin = get_book_data_asin(input)
       get_all_book_reviews(data_asin, max_page).each do |review|
-        if review
+        if review[:text]
+          date = review[:date] ? review[:date].to_datetime : nil
           new_review = AmazonReview.new(
-            review: review,
+            review: review[:text],
+            creation_date: date,
             book: book
           )
           new_review.save
