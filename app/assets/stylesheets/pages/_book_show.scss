@@ -67,10 +67,10 @@
     border-radius: 5px;
     padding: 15px 10px;
     margin: 5px;
-
-    .emoji {
-      font-size: 80px;
-    }
+  }
+  p.emoji {
+    font-size: 80px !important;
+    border: none;
   }
 
 }
@@ -89,12 +89,14 @@
     border-radius: 5px;
     padding: 15px 10px;
     margin: 5px;
+  }
 
-    .emoji {
-      font-size: 80px;
-    }
+  p.emoji {
+    font-size: 80px !important;
+    border: none;
   }
 }
+
 
 // Grid structure for detailed book analysis
 .book-analysis {
