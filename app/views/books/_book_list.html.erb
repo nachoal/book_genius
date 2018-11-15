@@ -14,10 +14,7 @@
       <h4>Sentiments:</h4>
       <div class="sentiments-box">
         <div class="network-sentiment">
-          <p><span style="font-size: 18px;"><span style="font-size: 25px; color: #55acee"><i class="fab fa-twitter-square"></i></span><span class="icon-separator"></span>  😍 :<%= book.count_polarity['positive'] %>&nbsp;&nbsp; 😐 :<%= book.count_polarity['neutral'] %>&nbsp;&nbsp; 😡 :<%= book.count_polarity['negative'] %></span><span class="sentiment-separator">|</span></p>
-        </div>
-        <div class="network-sentiment">
-          <p><span style="font-size: 18px;"><span style="font-size: 25px; color: #ff9900"><i class="fab fa-amazon"></i></span><span class="icon-separator"></span>  😍 :<%= book.count_polarity_amazon['positive'] %>&nbsp;&nbsp; 😐 :<%= book.count_polarity_amazon['neutral'] %>&nbsp;&nbsp; 😡 :<%= book.count_polarity_amazon['negative'] %></span></p>
+          <p>😍 :<%= book.count_polarity['positive'] + book.count_polarity_amazon['positive'] %>&nbsp;&nbsp; 😐 :<%= book.count_polarity['neutral'] + book.count_polarity_amazon['neutral'] %>&nbsp;&nbsp; 😡 :<%= book.count_polarity['negative'] + book.count_polarity_amazon['negative'] %></span></p>
         </div>
       </div>
     </div>

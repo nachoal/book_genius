@@ -6,4 +6,5 @@ class PagesController < ApplicationController
     emoji_images = Emoji.random_images(15)
     @tile_images = (book_images + emoji_images).shuffle
   end
+
 end
