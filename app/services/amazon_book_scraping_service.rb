@@ -43,7 +43,7 @@ class AmazonBookScrapingService
         puts "Book (ASIN: #{data_asin}): Fetching review and date #{i} of page #{page}"
         review = {
           text: r.children.text,
-          date: creation_date[i - 1].children.text
+          date: creation_dates[i - 1].children.text,
         }
         review_list << review
         puts "Waiting 0.5 sec before fetching next review"
