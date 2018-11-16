@@ -6,6 +6,32 @@
   padding: 20px;
   margin-bottom: 50px;
   box-shadow: 0 15px 35px rgba(50, 50, 93, 0.1), 0 5px 15px rgba(0, 0, 0, 0.07);
+
+  .buy-button {
+    border: 1px solid $red;
+    border-radius: 5px;
+    height: 45px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 45px; 
+    vertical-align: middle;
+    margin-top: 10px;
+    background: $red;
+    font-weight: bold;
+    color:white;
+  }
+
+  .buy-button:hover {
+    border: 1px solid $red;
+
+    border-radius: 5px;
+
+    margin-top: 10px;
+
+    background: transparent;
+
+    color: $red;
+  }
 }
 
 .book-card:first-of-type {

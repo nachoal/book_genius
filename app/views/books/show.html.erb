@@ -8,11 +8,18 @@
   <div class="book-show">
     <div class="book-show-cover" style="background-image: url(<%= @book.book_image.file.nil? ? "https://via.placeholder.com/178x256" : cloudinary_url(@book.book_image) %>);">
     </div>
-
+    <%#<div class="buy-button book-show-buy text-center"> %>
+      <%# <a href="<%= @book.affiliate_assign %">Buy on Amazon</a>%>
+    <%# </div> %>
     <div class="book-show-description">
       <h2><%= @book.title %></h2>
       <h3>by <%= @book.author %></h3>
       <p><%= @book.description %></p>
+      <a href="<%= @book.affiliate_assign %>">
+        <div class="buy-button text-center">
+          Buy on Amazon
+        </div>
+      </a>
     </div>
     <div class="twitter-sentiment">
       <h4>on <i class="fab fa-twitter" style="color: #1da1f2"></i></h4>
