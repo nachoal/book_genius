@@ -25,7 +25,7 @@
 
 .search {
   position: relative;
-  color: #000;
+  color: white;
   font-size: 18px;
   width: 100%;
 }
@@ -54,14 +54,16 @@
 
 .btn {
   height: 50px;
-  width: 50px;
+  width: 100px;
   border-radius: 0px 10px 10px 0px;
   background-color: $red;
   border-color: $red;
+  color: white;
   &:hover {
     color: white;
     background-color: lighten($red, 5%);
     border-color: lighten($red, 5%);
+
   }
 }
 
@@ -71,11 +73,10 @@
 }
 
 .search-nav {
-  position: relative;
   color: #000;
   font-size: 16px;
-  width: 100%;
-  margin-top: 20px;
+  display: flex;
+  justify-content: flex-end;
 
   .btn {
     border-radius: 0px 10px 10px 0px;
@@ -101,7 +102,6 @@
   border-radius: 5px 0 0 5px;
   border-bottom: 1px $red solid;
   box-shadow: none;
-  margin-left: 250px;
 }
 
 .search-nav .fa-search {
@@ -110,3 +110,20 @@
   // left: 10px;
   color: white;
 }
+
+.search-magnifier{
+  background-image: url('https://i.postimg.cc/C1N1F3YV/search.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 40%;
+  width: 60px !important;
+  color: red;
+
+  &:hover {
+    background-image: url("https://i.postimg.cc/HLbnNJhn/search-red.png");
+  }
+}
+
+
+// https://i.postimg.cc/HLbnNJhn/search-red.png
+// https://i.postimg.cc/C1N1F3YV/search.png

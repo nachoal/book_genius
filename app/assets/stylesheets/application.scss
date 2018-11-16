@@ -16,7 +16,11 @@
 
 
 a {
-  color: #b73535;
+  color: $red;
+}
+
+a:hover {
+  color: darken($red, 10%);
 }
 
 body {

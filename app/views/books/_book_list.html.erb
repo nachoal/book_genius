@@ -5,6 +5,11 @@
   <div class="book-card">
     <div class="book-cover">
         <%= link_to(cl_image_tag(book.book_image.url(:thumbnail), width: 178, height: 256), book)%>
+        <a href="<%= book.affiliate_assign %>">
+          <div class="buy-button text-center">
+            Buy on Amazon 
+          </div>
+        </a>
     </div>
 
     <div class="book-body">
@@ -22,9 +27,9 @@
     </div>
 
     <div class="book-mentions" >
-      <h2>Trend line:</h2>
+      <h2>📈 Mentions over time:</h2>
       <p style="font-size: 10px; color: hsl(0, 0%, 45%);">From <%= book.tweets.group_by_day(:creation_date).count.keys.first %> to <%= book.tweets.group_by_day(:creation_date).count.keys.last %>.</p>
-      <%= line_chart(book.tweets.group_by_day(:creation_date).count, width: "200px", height: "200px",colors: ["#b73535"], library: {
+      <%= line_chart(book.tweets.group_by_day(:creation_date).count, width: "200px", height: "200px",colors: ["#ea1821"], library: {
           layout: {
                     padding: {left: 10, right: 5, top: 5, bottom: 2}
           },

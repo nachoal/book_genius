@@ -12,7 +12,6 @@
 .book-show {
   display: grid;
   grid-template-columns: 1fr 3fr 1fr 1fr;
-  grid-template-row: 1fr;
   margin-top: 50px;
   margin-bottom: 50px;
   padding: 15px 5px;
@@ -34,6 +33,54 @@
   min-height: 200px;
   margin-right: 15px;
 }
+
+.book-show-buy {
+  grid-row: 2 / span 1;
+}
+
+a {
+  .buy-button {
+    color:white;
+    width: 150px;
+  }
+}
+
+.buy-button {
+
+  
+  border: 1px solid $red;
+
+  border-radius: 5px;
+
+  height: 45px;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 45px; 
+  vertical-align: middle;
+  margin-top: 10px;
+  background: $red;
+  font-weight: bold;
+  a{
+    color: white;
+  }
+}
+
+.buy-button:hover {
+  border: 1px solid $red;
+
+  border-radius: 5px;
+
+  margin-top: 10px;
+
+  background: transparent;
+
+  color: $red;
+
+  a {
+    color: $red;
+  }
+}
+
 
 .book-show-description {
   grid-column: 2 / span 1;
