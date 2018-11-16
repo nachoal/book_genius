@@ -51,4 +51,23 @@ class TwitterService
       end
     end
   end
+
+  def self.display_tweets(book)
+    urls = []
+    html_codes = []
+    client.search("#{book.title} book -rt", lang: 'en').take(4).each do |search_result|
+      urls << search_result.urls[0].expanded_url.to_str
+    end
+    urls.each do |url|
+      begin        
+        embed = client.oembed(url).html
+        html_codes << embed
+      rescue Twitter::Error::NotFound
+        puts "Skipping invalid url #{url}"
+      end
+    end
+    html_codes
+  end
 end
+
+

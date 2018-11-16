@@ -36,7 +36,7 @@
   </div>
 
 
-  <div class="book-analysis">
+  <div class="book-analysis-twitter">
 
     <div class="logo twitter">
       <i class="fab fa-twitter"></i>
@@ -72,18 +72,25 @@
     </div>
 
     <div class="book-comments">
-      <ul class="no-dot">
-        <% @book.tweets.sample(5).each do |t| %>
-          <li><div class="speech-bubble"><%= t.tweet %></div></li>
-        <% end %>
-      </ul>
-    </div>
+      <div class="comments-grid">
+        <!--<% @book.tweets.sample(5).each do |t| %> -->
+          <!--<li><div class="speech-bubble"><%= t.tweet %></div></li> -->
+         <!-- <blockquote class="twitter-tweet" data-cards="hidden" data-lang="en"><p lang="en" dir="ltr">Dear <a href="https://twitter.com/narendramodi?ref_src=twsrc%5Etfw">@narendramodi</a> <br>Here is a picture of Indira Gandhi laying Pipes ..<br>At Pokhran ..<br>BTW Chaiwala, One has to drill and lay pipes to conduct a &quot;Nuclear Test&quot;<br>I&#39;m anti-nuke though .. <a href="https://t.co/zLEefn2iU4">pic.twitter.com/zLEefn2iU4</a></p>&mdash; Shuvankar Mukherjee (@shuvankr) <a href="https://twitter.com/shuvankr/status/1063426215539875841?ref_src=twsrc%5Etfw">November 16, 2018</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
+        <% end %>
+        -->
+        <% TwitterService.display_tweets(@book).each do |html_code| %>
+          <%= html_code.html_safe %>
+        <% end  %>
+      </div>
+    </div>
+    
   </div>
 
 
 
-  <div class="book-analysis">
+  <div class="book-analysis-amazon">
 
     <div class="logo amazon">
       <i class="fab fa-amazon"></i>

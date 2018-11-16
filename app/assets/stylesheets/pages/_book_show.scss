@@ -19,7 +19,6 @@
   border-radius: 5px;
   box-shadow: 0 15px 35px rgba(50, 50, 93, 0.1), 0 5px 15px rgba(0, 0, 0, 0.07);
   background-color: white;
-  opacity: 0.8;
 }
 
 .book-show-cover {
@@ -158,9 +157,33 @@ a {
   border-radius: 5px;
   box-shadow: 0 15px 35px rgba(50, 50, 93, 0.1), 0 5px 15px rgba(0, 0, 0, 0.07);
   background-color: white;
-  opacity: 0.8;
 }
 
+.book-analysis-twitter {
+  display: grid;
+  grid-template-columns: 1fr 80px 1fr 1fr 1fr;
+  grid-template-row: 1fr 1fr 1fr 1px 1fr 1fr 1fr 1fr;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  padding: 15px 5px;
+  border: 1px solid #ece9e9;
+  border-radius: 5px;
+  box-shadow: 0 15px 35px rgba(50, 50, 93, 0.1), 0 5px 15px rgba(0, 0, 0, 0.07);
+  background-color: white;
+}
+
+.book-analysis-amazon {
+  display: grid;
+  grid-template-columns: 1fr 80px 1fr 1fr 1fr;
+  grid-template-row: 1fr 1fr 1fr 1px 1fr 1fr 1fr 1fr;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  padding: 15px 5px;
+  border: 1px solid #ece9e9;
+  border-radius: 5px;
+  box-shadow: 0 15px 35px rgba(50, 50, 93, 0.1), 0 5px 15px rgba(0, 0, 0, 0.07);
+  background-color: white;
+}
 .twitter-background {
   background-color: rgba(29,161,242, 0.1);
 }
@@ -268,8 +291,10 @@ a {
 }
 
 .book-comments {
-  grid-column: 2 / span 3;
+  grid-column: 1 / span 5;
   grid-row: 6 / span 3;
+  /* flex-wrap: wrap; */
+  display: flex;
 }
 
 .book-reviews {
@@ -808,4 +833,11 @@ a {
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.comments-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 20px;
+  margin: 0 auto;
 }
