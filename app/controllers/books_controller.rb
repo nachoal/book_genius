@@ -3,6 +3,11 @@ class BooksController < ApplicationController
 
   def index
     @books = Book.search(params[:search])
+
+    # for the background
+    book_images = Book.random_images(45)
+    emoji_images = Emoji.random_images(15)
+    @tile_images = (book_images + emoji_images).shuffle
   end
 
   def google_search
@@ -23,5 +28,9 @@ class BooksController < ApplicationController
 
   def show
     @book = Book.find(params[:id])
+
+    book_images = Book.random_images(45)
+    emoji_images = Emoji.random_images(15)
+    @tile_images = (book_images + emoji_images).shuffle
   end
 end
