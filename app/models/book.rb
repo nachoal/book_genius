@@ -113,6 +113,10 @@ class Book < ApplicationRecord
     counter
   end
 
+  def affiliate_assign
+    self.amazon_product_url.gsub(/NYTBS-20/,'bookgenius-20')
+  end
+
   def count_polarity_amazon
     counter = Hash.new(0)
     self.amazon_reviews.each do |review|
