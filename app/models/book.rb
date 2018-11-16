@@ -68,6 +68,22 @@ class Book < ApplicationRecord
     # aylien_book_results.first.nil? && aylien_book_results.first.aylien_twitter_json.nil? ? "Not enough twitter comments found" : aylien_book_results.first.aylien_twitter_json["polarity"]
   end
 
+  def overall_sentiment
+    positive = count_polarity["positive"] + count_polarity_amazon["positive"]
+    neutral = count_polarity["neutral"] + count_polarity_amazon["neutral"]
+    negative = count_polarity["negative"] + count_polarity_amazon["negative"]
+    resultado = neutral + (positive + negative) * Math.cos(60)
+    if resultado > 0
+      '<p class="emoji">👍</p>'
+    else
+      if positive > negative
+        '<p class="emoji">😐</p>'
+      else
+        '<p class="emoji">👎</p>'
+      end
+    end
+  end
+
   def translate_to_emoji(string)
     case string
     when "neutral"

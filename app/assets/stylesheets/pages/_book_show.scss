@@ -46,8 +46,6 @@ a {
 }
 
 .buy-button {
-
-
   border: 1px solid $red;
 
   border-radius: 5px;
@@ -67,13 +65,9 @@ a {
 
 .buy-button:hover {
   border: 1px solid $red;
-
   border-radius: 5px;
-
   margin-top: 10px;
-
   background: transparent;
-
   color: $red;
 
   a {
@@ -85,6 +79,7 @@ a {
 .book-show-description {
   grid-column: 2 / span 1;
   margin-right: 15px;
+  margin-left: 25px;
 
   h2 {
     margin: 0;
@@ -101,9 +96,11 @@ a {
   }
 }
 
-.twitter-sentiment{
+.overall-sentiment{
   grid-column: 3 / span 1;
   text-align: center;
+  text-align: right;
+  padding: 12% 0;
 
   h4 {
     font-size: 24px;
@@ -119,13 +116,16 @@ a {
   p.emoji {
     font-size: 80px !important;
     border: none;
+    padding-right: 0;
+    margin-right: 0;
   }
 
 }
 
-.amazon-sentiment{
+.show-social-icons{
   grid-column: 4 /span 1;
   text-align: center;
+  padding-left: 40px;
 
   h4 {
     font-size: 24px;
