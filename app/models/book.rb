@@ -77,6 +77,26 @@ class Book < ApplicationRecord
     end
   end
 
+  def cursor
+    positive = count_polarity["positive"] + count_polarity_amazon["positive"]
+    neutral = count_polarity["neutral"] + count_polarity_amazon["neutral"]
+    negative = count_polarity["negative"] + count_polarity_amazon["negative"]
+    total = positive + neutral + negative
+
+    if total != 0
+      cursor = {
+        positive: ((positive.to_f / total.to_f) * 100).to_i,
+        neutral: (((positive.to_f + neutral.to_f) / total.to_f) * 100).to_i,
+      }
+    else
+      cursor = {
+        positive: 33.to_i,
+        neutral: 66.to_i,
+      }
+    end
+    cursor
+  end
+
   def twitter_polarity_score
     aylien_book_results.first.aylien_twitter_json["polarity_confidence"]
   end

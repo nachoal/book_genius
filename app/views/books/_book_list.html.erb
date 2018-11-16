@@ -1,26 +1,28 @@
 <%= javascript_pack_tag 'charting' %>
 
 <% @books.each do |book| %>
-  <div class="book-card">
+
+  <div class="book-card" style="background: linear-gradient(90deg, rgba(30,226,9,1) 0%, rgba(255,206,151,1) <%= book.cursor[:positive] %>%, rgba(255,170,75,1) <%= book.cursor[:neutral] %>%, rgba(255,0,0,1) 100%); opacity: 0.7">
     <div class="book-cover">
         <%= link_to(cl_image_tag(book.book_image.url(:thumbnail), width: 178, height: 256), book)%>
     </div>
 
     <div class="book-body">
-      <h2><%= link_to(book.title.capitalize, book)%></h2>
-      <h3>by <%= book.author %></h3>
-      <p><%= book.description[0..150].gsub(/\s\w+\s*$/,'...') %></p>
+      <div class="book-content">
+        <div class="book-text">
+          <h2><%= link_to(book.title.capitalize, book)%></h2>
+          <h3>by <%= book.author %></h3>
+          <p><%= book.description[0..150].gsub(/\s\w+\s*$/,'...') %></p>
+        </div>
 
-      <h4>Sentiments:</h4>
-      <div class="sentiments-box">
-        <div class="network-sentiment">
-          <p>😍 :<%= book.count_polarity['positive'] + book.count_polarity_amazon['positive'] %>&nbsp;&nbsp; 😐 :<%= book.count_polarity['neutral'] + book.count_polarity_amazon['neutral'] %>&nbsp;&nbsp; 😡 :<%= book.count_polarity['negative'] + book.count_polarity_amazon['negative'] %></span></p>
+        <div class="sentiments-box">
+          <p><span class="card-emoji">😍</span> <%= book.count_polarity['positive'] + book.count_polarity_amazon['positive'] %>&nbsp;&nbsp; <span class="card-emoji">😐</span> <%= book.count_polarity['neutral'] + book.count_polarity_amazon['neutral'] %>&nbsp;&nbsp; <span class="card-emoji">😡</span> <%= book.count_polarity['negative'] + book.count_polarity_amazon['negative'] %></p>
         </div>
       </div>
     </div>
 
     <div class="book-mentions" >
-      <h2>Mentions/reviews over time:</h2>
+      <h2>Trend line:</h2>
       <p style="font-size: 10px; color: hsl(0, 0%, 45%);">From <%= book.tweets.group_by_day(:creation_date).count.keys.first %> to <%= book.tweets.group_by_day(:creation_date).count.keys.last %>.</p>
       <%= line_chart(book.tweets.group_by_day(:creation_date).count, width: "200px", height: "200px",colors: ["#b73535"], library: {
           layout: {

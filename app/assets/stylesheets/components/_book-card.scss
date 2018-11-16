@@ -2,7 +2,9 @@
   display: flex;
   align-items: flex-start;
   border: 1px solid #ece9e9;
-  background-color: white;
+  // background-color: white;
+  background: rgb(30,226,9);
+
   opacity: 0.8;
   border-radius: 5px;
   padding: 20px;
@@ -71,6 +73,39 @@
   flex: 0 0 20%;
 }
 
+.book-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 260px;
+}
+
+.book-text {
+  flex: 0 1 auto;
+}
+
+.sentiments-box {
+  flex: 0 1 auto;
+  font-weight: bold;
+
+  .card-emoji {
+    font-size: 55px;
+  }
+}
+
+.sentiment-separator {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.icon-separator {
+  margin-right: 15px;
+}
+
+// .network-sentiment {
+//   flex: 0 0 auto;
+// }
+
 .book-mentions {
   flex: 0 0 30%;
   margin-right: 20px;
@@ -88,21 +123,3 @@
   }
 }
 
-.sentiments-box {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-}
-
-.sentiment-separator {
-  margin-left: 20px;
-  margin-right: 20px;
-}
-
-.icon-separator {
-  margin-right: 15px;
-}
-
-.network-sentiment {
-  flex: 0 0 auto;
-}
