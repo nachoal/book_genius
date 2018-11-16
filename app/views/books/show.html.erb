@@ -118,7 +118,11 @@
     <div class="book-reviews padding-right">
       <ul class="no-dot">
         <% @book.amazon_reviews.sample(5).each do |r| %>
-          <li><div class="review-square"><%= r.review %></div></li>
+          <li>
+            <div class="review-square">
+              <div class="review-shortened"><%= r.review %></div>
+            </div>
+          </li>
         <% end %>
       </ul>
     </div>

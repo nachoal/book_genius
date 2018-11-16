@@ -30,6 +30,10 @@ class Book < ApplicationRecord
 
   scope :no_twitter_aylien, -> { left_joins(:aylien_book_results).where("aylien_book_results.aylien_twitter_json IS NULL")}
 
+  scope :no_indiv_twitter_aylien, -> { left_joins(:tweets).group("book_id").where("tweets.aylient_result_json IS NULL")}
+
+  scope :no_indiv_review_aylien, -> { left_joins(:amazon_reviews).group("book_id").where("amazon_reviews.aylien_result_json IS NULL")}
+
   def self.search(search)
     if search.present?
       search_by_category_title_author_and_publisher(search)
