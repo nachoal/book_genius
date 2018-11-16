@@ -312,12 +312,12 @@ a {
 
 // Amazon review squared
 .review-square {
-  border: 1px solid rgb(216, 133, 7) ;
-  background: rgb(216, 133, 7);
+  border: 1px solid #FFBB51;
+  background: #FFBB51;
   border-radius: .4em;
-  margin: 15px;
-  padding: 10px;
-  color: white;
+  margin: 18px 12px;
+  padding: 24px 32px;
+  color: black;
 }
 
 .no-dot {
@@ -788,7 +788,24 @@ a {
     color: black;
   }
 
+
   .no-dot {
     list-style-type: none;
   }
+}
+
+.review-shortened {
+  $font-size: 18px;
+  $line-height: 1.4;
+  $lines-to-show: 4;
+
+  display: block; /* Fallback for non-webkit */
+  display: -webkit-box;
+  max-height: $font-size*$line-height*$lines-to-show; /* Fallback for non-webkit */
+  font-size: $font-size;
+  line-height: $line-height;
+  -webkit-line-clamp: $lines-to-show;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
