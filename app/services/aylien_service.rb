@@ -40,7 +40,7 @@ class AylienService
   end
 
   def self.individual_tweet_sentiment
-    tweets = Tweet.all
+    tweets = Tweet.all.where(aylient_result_json: nil)
     tweets.each do |tweet|
       tweet.update(aylient_result_json: AylienService.text_api.sentiment(text: tweet.tweet))
     end
@@ -74,7 +74,7 @@ class AylienService
   end
 
   def self.individual_review_sentiment
-    reviews = AmazonReview.all
+    reviews = AmazonReview.all.where(aylien_result_json: nil)
     reviews.each do |review|
       review.update(aylien_result_json: AylienService.text_api.sentiment(text: review.review))
     end
