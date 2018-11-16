@@ -5,11 +5,6 @@
   <div class="book-card">
     <div class="book-cover">
         <%= link_to(cl_image_tag(book.book_image.url(:thumbnail), width: 178, height: 256), book)%>
-        <a href="<%= book.affiliate_assign %>">
-          <div class="buy-button text-center">
-            Buy on Amazon 
-          </div>
-        </a>
     </div>
 
     <div class="book-body">
@@ -22,7 +17,15 @@
 
         <div class="sentiments-box">
           <p><span class="card-emoji">😍</span> <%= book.count_polarity['positive'] + book.count_polarity_amazon['positive'] %>&nbsp;&nbsp; <span class="card-emoji">😐</span> <%= book.count_polarity['neutral'] + book.count_polarity_amazon['neutral'] %>&nbsp;&nbsp; <span class="card-emoji">😡</span> <%= book.count_polarity['negative'] + book.count_polarity_amazon['negative'] %></p>
+
+          <a href="<%= book.affiliate_assign %>">
+            <div class="buy-button text-center">
+              Buy on Amazon
+            </div>
+          </a>
         </div>
+
+
       </div>
     </div>
 
@@ -47,6 +50,14 @@
           }
         }]
       }})%>
+    </div>
+
+    <div class="show-social-icons">
+      <ul class="no-dot product-controls hidden-sm hidden-xs">
+        <li class="heart"><a href=""><i class="fas fa-heart"></i></a></li>
+        <li class="share"><a href=""><i class="fas fa-share"></i></a></li>
+        <li class="star"><a href=""><i class="fas fa-star"></i></a></li>
+      </ul>
     </div>
   </div>
 <% end %>

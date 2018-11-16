@@ -1,6 +1,6 @@
 .book-card {
   display: flex;
-  align-items: flex-start;
+  // align-items: flex-start;
   border: 3.5px solid #ea1821;
   border-radius: 10px;
   background-color: white;
@@ -16,7 +16,7 @@
     height: 45px;
     text-align: center;
     vertical-align: middle;
-    line-height: 45px; 
+    line-height: 45px;
     vertical-align: middle;
     margin-top: 10px;
     background: $red;
@@ -84,7 +84,7 @@
     margin-top: 5px;
     font-style: italic;
     font-weight: lighter;
-    font-size: 1em;
+    font-size: 0.9em;
   }
 
   h4 {
@@ -102,11 +102,15 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 260px;
+  height: 256px;
 }
 
 .book-text {
   flex: 0 1 auto;
+
+  p {
+    font-size: 16px;
+  }
 }
 
 .sentiments-box {
@@ -114,8 +118,12 @@
   font-weight: bold;
 
   .card-emoji {
-    font-size: 55px;
+    font-size: 40px;
   }
+}
+
+.button {
+  flex: 0 1 auto;
 }
 
 .sentiment-separator {
@@ -132,11 +140,12 @@
 // }
 
 .book-mentions {
-  flex: 0 0 30%;
+  flex: 0 0 auto;
   margin-right: 20px;
   h2 {
     margin-top: 0;
-    font-size: 1.1em;
+    margin-bottom: 5px;
+    font-size: 0.9em;
     font-weight: 900;
   }
 
@@ -146,5 +155,49 @@
     margin: 25px;
     border-radius: 5px;
   }
+
+  p {
+    margin: 0;
+  }
+}
+
+.social-icons {
+  flex: 0 0 auto;
+  padding-left: 10px;
+}
+
+/* Controls design */
+.product-controls {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+  margin: 0px;
+
+  .fas {
+    font-size: 1.4em;
+  }
+
+  .li {
+    margin: 10px 0px;
+  }
+}
+.product-controls a {
+  padding: 0 20px;
+  font-size: 1.25em;
+  color: #c9c9c9 !important;
+}
+
+
+.product-controls a:hover {
+  color: $red !important
+}
+.product-controls-hidden a {
+  color: transparent;
+  font-size: 1.25em;
+  transition: all 0.15s ease;
+  border-color: transparent;
 }
 

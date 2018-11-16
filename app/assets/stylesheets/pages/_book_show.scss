@@ -45,8 +45,6 @@ a {
 }
 
 .buy-button {
-
-  
   border: 1px solid $red;
 
   border-radius: 5px;
@@ -54,7 +52,7 @@ a {
   height: 45px;
   text-align: center;
   vertical-align: middle;
-  line-height: 45px; 
+  line-height: 45px;
   vertical-align: middle;
   margin-top: 10px;
   background: $red;
@@ -66,13 +64,9 @@ a {
 
 .buy-button:hover {
   border: 1px solid $red;
-
   border-radius: 5px;
-
   margin-top: 10px;
-
   background: transparent;
-
   color: $red;
 
   a {
@@ -84,6 +78,7 @@ a {
 .book-show-description {
   grid-column: 2 / span 1;
   margin-right: 15px;
+  margin-left: 25px;
 
   h2 {
     margin: 0;
@@ -100,9 +95,11 @@ a {
   }
 }
 
-.twitter-sentiment{
+.overall-sentiment{
   grid-column: 3 / span 1;
   text-align: center;
+  text-align: right;
+  padding: 12% 0;
 
   h4 {
     font-size: 24px;
@@ -118,13 +115,16 @@ a {
   p.emoji {
     font-size: 80px !important;
     border: none;
+    padding-right: 0;
+    margin-right: 0;
   }
 
 }
 
-.amazon-sentiment{
+.show-social-icons{
   grid-column: 4 /span 1;
   text-align: center;
+  padding-left: 40px;
 
   h4 {
     font-size: 24px;
@@ -146,7 +146,21 @@ a {
 
 
 // Grid structure for detailed book analysis
-.book-analysis {
+.book-analysis-twitter {
+  display: grid;
+  grid-template-columns: 1fr 80px 1fr 1fr 1fr;
+  grid-template-row: 1fr 1fr 1fr 1px 1fr 1fr 1fr 1fr;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  padding: 15px 5px;
+  border: 1px solid #ece9e9;
+  border-radius: 5px;
+  box-shadow: 0 15px 35px rgba(50, 50, 93, 0.1), 0 5px 15px rgba(0, 0, 0, 0.07);
+  background-color: white;
+  opacity: 0.8;
+}
+
+.book-analysis-amazon {
   display: grid;
   grid-template-columns: 1fr 80px 1fr 1fr 1fr;
   grid-template-row: 1fr 1fr 1fr 1px 1fr 1fr 1fr 1fr;
