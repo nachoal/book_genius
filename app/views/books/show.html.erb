@@ -1,6 +1,10 @@
 <%= javascript_pack_tag 'charting' %>
 
-<div class="background" style="background-image: url(<%= @book.book_image.file.nil? ? "" : cloudinary_url(@book.book_image) %>);">
+<div class="banner bckg-opacity">
+  <% @tile_images.each do |tile_image| %>
+    <div class="item" style='background-image: url(<%= cl_image_path(
+    tile_image).gsub(/http/, 'https').gsub(/httpss/,'https') %>);'></div>
+  <% end %>
 </div>
 
 <div class="container">

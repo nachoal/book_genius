@@ -18,9 +18,10 @@
 
 .banner {
   display: flex;
-  position: relative;
+  position: fixed;
   flex-wrap: wrap;
   width: 100vw;
+  z-index: -1;
 }
 
 .item {
@@ -77,4 +78,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.bckg-opacity {
+  opacity: 0.2;
+  top: 0;
 }
