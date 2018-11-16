@@ -72,11 +72,10 @@
 }
 
 .search-nav {
-  position: relative;
   color: #000;
   font-size: 16px;
-  width: 100%;
-  margin-top: 20px;
+  display: flex;
+  justify-content: flex-end;
 
   .btn {
     border-radius: 0px 10px 10px 0px;
@@ -102,7 +101,6 @@
   border-radius: 5px 0 0 5px;
   border-bottom: 1px $red solid;
   box-shadow: none;
-  margin-left: 250px;
 }
 
 .search-nav .fa-search {
@@ -110,4 +108,12 @@
   // top: 10px;
   // left: 10px;
   color: white;
+}
+
+.search-magnifier{
+  background-image: url('search.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 40%;
+  width: 60px !important;
 }
