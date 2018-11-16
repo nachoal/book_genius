@@ -30,6 +30,10 @@ class Book < ApplicationRecord
 
   scope :no_twitter_aylien, -> { left_joins(:aylien_book_results).where("aylien_book_results.aylien_twitter_json IS NULL")}
 
+  scope :no_indiv_twitter_aylien, -> { left_joins(:tweets).group("book_id").where("tweets.aylient_result_json IS NULL")}
+
+  scope :no_indiv_review_aylien, -> { left_joins(:amazon_reviews).group("book_id").where("amazon_reviews.aylien_result_json IS NULL")}
+
   def self.search(search)
     if search.present?
       search_by_category_title_author_and_publisher(search)
@@ -75,6 +79,26 @@ class Book < ApplicationRecord
     else
       "<p>#{string}</p>"
     end
+  end
+
+  def cursor
+    positive = count_polarity["positive"] + count_polarity_amazon["positive"]
+    neutral = count_polarity["neutral"] + count_polarity_amazon["neutral"]
+    negative = count_polarity["negative"] + count_polarity_amazon["negative"]
+    total = positive + neutral + negative
+
+    if total != 0
+      cursor = {
+        positive: ((positive.to_f / total.to_f) * 100).to_i,
+        neutral: (((positive.to_f + neutral.to_f) / total.to_f) * 100).to_i,
+      }
+    else
+      cursor = {
+        positive: 33.to_i,
+        neutral: 66.to_i,
+      }
+    end
+    cursor
   end
 
   def twitter_polarity_score
