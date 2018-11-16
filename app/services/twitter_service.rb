@@ -56,7 +56,13 @@ class TwitterService
     urls = []
     html_codes = []
     client.search("#{book.title} book -rt", lang: 'en').take(4).each do |search_result|
-      urls << search_result.urls[0].expanded_url.to_str
+      if search_result[0].nil?
+        "no tweets found"
+        raise
+      else
+        urls << search_result.urls[0].expanded_url.to_str
+        raise 
+      end
     end
     urls.each do |url|
       begin        
