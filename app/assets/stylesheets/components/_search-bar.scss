@@ -63,6 +63,7 @@
     color: white;
     background-color: lighten($red, 5%);
     border-color: lighten($red, 5%);
+
   }
 }
 
@@ -111,9 +112,18 @@
 }
 
 .search-magnifier{
-  background-image: url('search.png');
+  background-image: url('https://i.postimg.cc/C1N1F3YV/search.png');
   background-position: center;
   background-repeat: no-repeat;
   background-size: 40%;
   width: 60px !important;
+  color: red;
+
+  &:hover {
+    background-image: url("https://i.postimg.cc/HLbnNJhn/search-red.png");
+  }
 }
+
+
+// https://i.postimg.cc/HLbnNJhn/search-red.png
+// https://i.postimg.cc/C1N1F3YV/search.png
