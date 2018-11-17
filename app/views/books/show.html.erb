@@ -76,13 +76,11 @@
 
     <div class="book-comments no-dot">
       <div class="comments-grid">
-        <% @book.tweets.sample(5).each do |t| %> 
-          <li><div class="speech-bubble"><%= t.tweet %></div></li> 
-
+        <% TwitterService.display_tweets(@book).each do |html|  %>
+          <%= html.html_safe %>
         <% end %>
       </div>
     </div>
-    
   </div>
 
 
